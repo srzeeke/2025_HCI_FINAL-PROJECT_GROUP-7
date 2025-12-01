@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ZFF - Inventory Item Management for comprehensive product entry and maintenance">
+    <title>Inventory Item Management - ZFF</title>
+    <link rel="stylesheet" href="../css/main.css">
+    </head>
+<body class="bg-background min-h-screen">
+    <!-- Header Navigation -->
+    <header class="bg-surface border-b border-border sticky top-0 z-50 shadow-sm">
+        <div class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo and Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-text-primary">PharmaCrew</h1>
+                        <p class="text-xs text-text-secondary">Inventory Management</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+                    <a href="business_overview_dashboard.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary hover:bg-primary-50 rounded-md transition-colors focus-visible-ring">
+                        Dashboard
+                    </a>
+                    <a href="inventory_analytics_center.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary hover:bg-primary-50 rounded-md transition-colors focus-visible-ring">
+                        Analytics
+                    </a>
+                    <a href="inventory_item_management.html" class="px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md transition-colors focus-visible-ring">
+                        Item Management
+                    </a>
+                    <a href="team_directory.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary hover:bg-primary-50 rounded-md transition-colors focus-visible-ring">
+                        Team
+                    </a>
+                    <a href="push_notification_testing_interface.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary hover:bg-primary-50 rounded-md transition-colors focus-visible-ring">
+                        Notifications
+                    </a>
+                </nav>
+
+                <!-- User Menu -->
+                <div class="flex items-center gap-3">
+                    <button type="button" class="relative p-2 text-text-secondary hover:text-primary rounded-lg hover:bg-primary-50 transition-colors focus-visible-ring" aria-label="View notifications">
+                        <img src="https://api.iconify.design/mdi:bell-outline.svg?color=%236B7280" alt="" class="w-6 h-6" aria-hidden="true">
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
+                    </button>
+                    <div class="flex items-center gap-2 pl-3 border-l border-border">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&h=40&fit=crop" 
+                                alt="Profile picture of current user" 
+                                class="w-8 h-8 rounded-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <button type="button" class="text-sm font-medium text-text-primary hover:text-primary focus-visible-ring rounded">
+                            Manager
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header with Actions -->
+        <div class="mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <h2 class="text-3xl font-semibold text-text-primary mb-2">Inventory Item Management</h2>
+                    <p class="text-text-secondary">Add, edit, and manage pharmacy inventory items with comprehensive data tracking</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button type="button" id="bulkImportBtn" class="btn btn-outline px-4 py-2 text-sm">
+                        <img src="https://api.iconify.design/mdi:file-upload-outline.svg?color=%232563EB" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                        Bulk Import
+                    </button>
+                    <button type="button" id="exportCatalogBtn" class="btn btn-outline px-4 py-2 text-sm">
+                        <img src="https://api.iconify.design/mdi:file-download-outline.svg?color=%232563EB" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                        Export Catalog
+                    </button>
+                </div>
+            </div>
+
+            <!-- System Integration Status -->
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-success-50 border border-success-200 rounded-lg">
+                    <span class="status-indicator status-active" aria-label="Supplier database connected"></span>
+                    <span class="text-xs font-medium text-success-700">Supplier DB Connected</span>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-success-50 border border-success-200 rounded-lg">
+                    <span class="status-indicator status-active" aria-label="FDA database connected"></span>
+                    <span class="text-xs font-medium text-success-700">FDA DB Active</span>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-success-50 border border-success-200 rounded-lg">
+                    <span class="status-indicator status-active" aria-label="Auto-ordering system connected"></span>
+                    <span class="text-xs font-medium text-success-700">Auto-Order System Online</span>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-primary-50 border border-primary-200 rounded-lg">
+                    <img src="https://api.iconify.design/mdi:sync.svg?color=%232563EB" alt="" class="w-4 h-4" aria-hidden="true">
+                    <span class="text-xs font-medium text-primary-700">Last Sync: 2 mins ago</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Search and Filter Bar -->
+        <div class="card p-4 mb-6">
+            <div class="flex flex-col lg:flex-row gap-4">
+                <div class="flex-1">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <img src="https://api.iconify.design/mdi:magnify.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                        </div>
+                        <input type="text" 
+                                id="quickSearch" 
+                                class="input pl-10 pr-10" 
+                                placeholder="Search by name, NDC, barcode, or manufacturer..."
+                                aria-label="Quick search inventory items">
+                        <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center text-text-secondary hover:text-primary focus-visible-ring rounded" aria-label="Scan barcode">
+                            <img src="https://api.iconify.design/mdi:barcode-scan.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                        </button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <select id="categoryFilter" class="input w-48" aria-label="Filter by category">
+                        <option value="">All Categories</option>
+                        <option value="prescription">Prescription</option>
+                        <option value="otc">Over-the-Counter</option>
+                        <option value="controlled">Controlled Substance</option>
+                        <option value="supplies">Medical Supplies</option>
+                    </select>
+                    <button type="button" id="resetFilters" class="btn btn-outline px-3 py-2" aria-label="Reset all filters">
+                        <img src="https://api.iconify.design/mdi:filter-remove-outline.svg?color=%232563EB" alt="" class="w-5 h-5" aria-hidden="true">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Form Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Form Section -->
+            <div class="lg:col-span-2">
+                <div class="card p-6">
+                    <!-- Form Header -->
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-border">
+                        <div>
+                            <h3 class="text-xl font-semibold text-text-primary">Add New Inventory Item</h3>
+                            <p class="text-sm text-text-secondary mt-1">Complete all required fields marked with *</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="badge badge-primary">Draft</span>
+                            <button type="button" id="saveDraftBtn" class="text-sm text-primary hover:text-primary-700 focus-visible-ring rounded px-2 py-1">
+                                Save Draft
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tabbed Interface -->
+                    <div class="mb-6">
+                        <div class="border-b border-border">
+                            <nav class="flex gap-1" aria-label="Item information tabs">
+                                <button type="button" class="tab-btn active" data-tab="basic">
+                                    <img src="https://api.iconify.design/mdi:information-outline.svg?color=%232563EB" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                                    Basic Information
+                                </button>
+                                <button type="button" class="tab-btn" data-tab="pricing">
+                                    <img src="https://api.iconify.design/mdi:currency-usd.svg?color=%236B7280" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                                    Pricing
+                                </button>
+                                <button type="button" class="tab-btn" data-tab="supplier">
+                                    <img src="https://api.iconify.design/mdi:truck-outline.svg?color=%236B7280" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                                    Supplier
+                                </button>
+                                <button type="button" class="tab-btn" data-tab="storage">
+                                    <img src="https://api.iconify.design/mdi:thermometer.svg?color=%236B7280" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                                    Storage
+                                </button>
+                                <button type="button" class="tab-btn" data-tab="regulatory">
+                                    <img src="https://api.iconify.design/mdi:shield-check-outline.svg?color=%236B7280" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                                    Regulatory
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Form Content -->
+                    <form id="inventoryItemForm" class="space-y-6" novalidate>
+                        <!-- Basic Information Tab -->
+                        <div id="basicTab" class="tab-content active">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Item Name -->
+                                <div class="md:col-span-2">
+                                    <label for="itemName" class="block text-sm font-medium text-text-primary mb-2">
+                                        Item Name <span class="text-accent">*</span>
+                                    </label>
+                                    <input type="text" 
+                                            id="itemName" 
+                                            name="itemName" 
+                                            class="input" 
+                                            placeholder="Enter medication or product name"
+                                            required
+                                            aria-required="true"
+                                            aria-describedby="itemName-error">
+                                    <p id="itemName-error" class="mt-1 text-xs text-error hidden" role="alert">Item name is required</p>
+                                </div>
+
+                                <!-- Generic Name -->
+                                <div>
+                                    <label for="genericName" class="block text-sm font-medium text-text-primary mb-2">
+                                        Generic Name
+                                    </label>
+                                    <input type="text" 
+                                            id="genericName" 
+                                            name="genericName" 
+                                            class="input" 
+                                            placeholder="Enter generic name"
+                                            list="genericSuggestions">
+                                    <datalist id="genericSuggestions">
+                                        <option value="Acetaminophen">
+                                        <option value="Ibuprofen">
+                                        <option value="Amoxicillin">
+                                        <option value="Lisinopril">
+                                    </datalist>
+                                </div>
+
+                                <!-- Brand Name -->
+                                <div>
+                                    <label for="brandName" class="block text-sm font-medium text-text-primary mb-2">
+                                        Brand Name
+                                    </label>
+                                    <input type="text" 
+                                            id="brandName" 
+                                            name="brandName" 
+                                            class="input" 
+                                            placeholder="Enter brand name">
+                                </div>
+
+                                <!-- NDC Number -->
+                                <div>
+                                    <label for="ndcNumber" class="block text-sm font-medium text-text-primary mb-2">
+                                        NDC Number <span class="text-accent">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <input type="text" 
+                                                id="ndcNumber" 
+                                                name="ndcNumber" 
+                                                class="input pr-10" 
+                                                placeholder="00000-0000-00"
+                                                pattern="[0-9]{5}-[0-9]{4}-[0-9]{2}"
+                                                required
+                                                aria-required="true"
+                                                aria-describedby="ndcNumber-error ndcNumber-help">
+                                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                            <img src="https://api.iconify.design/mdi:check-circle.svg?color=%2310B981" alt="" class="w-5 h-5 hidden" id="ndcValidIcon" aria-hidden="true">
+                                        </div>
+                                    </div>
+                                    <p id="ndcNumber-help" class="mt-1 text-xs text-text-secondary">Format: 00000-0000-00</p>
+                                    <p id="ndcNumber-error" class="mt-1 text-xs text-error hidden" role="alert">Valid NDC number is required</p>
+                                </div>
+
+                                <!-- Barcode -->
+                                <div>
+                                    <label for="barcode" class="block text-sm font-medium text-text-primary mb-2">
+                                        Barcode/UPC
+                                    </label>
+                                    <div class="relative">
+                                        <input type="text" 
+                                                id="barcode" 
+                                                name="barcode" 
+                                                class="input pr-10" 
+                                                placeholder="Scan or enter barcode">
+                                        <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center text-primary hover:text-primary-700 focus-visible-ring rounded" aria-label="Scan barcode with camera">
+                                            <img src="https://api.iconify.design/mdi:camera-outline.svg?color=%232563EB" alt="" class="w-5 h-5" aria-hidden="true">
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Manufacturer -->
+                                <div>
+                                    <label for="manufacturer" class="block text-sm font-medium text-text-primary mb-2">
+                                        Manufacturer <span class="text-accent">*</span>
+                                    </label>
+                                    <input type="text" 
+                                            id="manufacturer" 
+                                            name="manufacturer" 
+                                            class="input" 
+                                            placeholder="Enter manufacturer name"
+                                            list="manufacturerSuggestions"
+                                            required
+                                            aria-required="true">
+                                    <datalist id="manufacturerSuggestions">
+                                        <option value="Pfizer Inc.">
+                                        <option value="Johnson & Johnson">
+                                        <option value="Merck & Co.">
+                                        <option value="GlaxoSmithKline">
+                                    </datalist>
+                                </div>
+
+                                <!-- Category -->
+                                <div>
+                                    <label for="category" class="block text-sm font-medium text-text-primary mb-2">
+                                        Category <span class="text-accent">*</span>
+                                    </label>
+                                    <select id="category" name="category" class="input" required aria-required="true">
+                                        <option value="">Select category</option>
+                                        <option value="prescription">Prescription Medication</option>
+                                        <option value="otc">Over-the-Counter</option>
+                                        <option value="controlled">Controlled Substance</option>
+                                        <option value="supplies">Medical Supplies</option>
+                                        <option value="vitamins">Vitamins & Supplements</option>
+                                    </select>
+                                </div>
+
+                                <!-- Dosage Form -->
+                                <div>
+                                    <label for="dosageForm" class="block text-sm font-medium text-text-primary mb-2">
+                                        Dosage Form <span class="text-accent">*</span>
+                                    </label>
+                                    <select id="dosageForm" name="dosageForm" class="input" required aria-required="true">
+                                        <option value="">Select form</option>
+                                        <option value="tablet">Tablet</option>
+                                        <option value="capsule">Capsule</option>
+                                        <option value="liquid">Liquid/Solution</option>
+                                        <option value="injection">Injection</option>
+                                        <option value="cream">Cream/Ointment</option>
+                                        <option value="inhaler">Inhaler</option>
+                                    </select>
+                                </div>
+
+                                <!-- Strength -->
+                                <div>
+                                    <label for="strength" class="block text-sm font-medium text-text-primary mb-2">
+                                        Strength <span class="text-accent">*</span>
+                                    </label>
+                                    <div class="flex gap-2">
+                                        <input type="text" 
+                                                id="strength" 
+                                                name="strength" 
+                                                class="input flex-1" 
+                                                placeholder="e.g., 500"
+                                                required
+                                                aria-required="true">
+                                        <select id="strengthUnit" name="strengthUnit" class="input w-24" required aria-required="true">
+                                            <option value="mg">mg</option>
+                                            <option value="g">g</option>
+                                            <option value="ml">ml</option>
+                                            <option value="mcg">mcg</option>
+                                            <option value="units">units</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Package Size -->
+                                <div>
+                                    <label for="packageSize" class="block text-sm font-medium text-text-primary mb-2">
+                                        Package Size <span class="text-accent">*</span>
+                                    </label>
+                                    <div class="flex gap-2">
+                                        <input type="number" 
+                                                id="packageSize" 
+                                                name="packageSize" 
+                                                class="input flex-1" 
+                                                placeholder="e.g., 100"
+                                                min="1"
+                                                required
+                                                aria-required="true">
+                                        <select id="packageUnit" name="packageUnit" class="input w-32" required aria-required="true">
+                                            <option value="tablets">Tablets</option>
+                                            <option value="capsules">Capsules</option>
+                                            <option value="ml">ml</option>
+                                            <option value="bottles">Bottles</option>
+                                            <option value="boxes">Boxes</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="md:col-span-2">
+                                    <label for="description" class="block text-sm font-medium text-text-primary mb-2">
+                                        Description
+                                    </label>
+                                    <textarea id="description" 
+                                                name="description" 
+                                                rows="3" 
+                                                class="input" 
+                                                placeholder="Enter product description, usage instructions, or notes"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Tab -->
+                        <div id="pricingTab" class="tab-content hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Cost Price -->
+                                <div>
+                                    <label for="costPrice" class="block text-sm font-medium text-text-primary mb-2">
+                                        Cost Price (USD) <span class="text-accent">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="text-text-secondary">$</span>
+                                        </div>
+                                        <input type="number" 
+                                                id="costPrice" 
+                                                name="costPrice" 
+                                                class="input pl-8" 
+                                                placeholder="0.00"
+                                                step="0.01"
+                                                min="0"
+                                                required
+                                                aria-required="true">
+                                    </div>
+                                </div>
+
+                                <!-- Retail Price -->
+                                <div>
+                                    <label for="retailPrice" class="block text-sm font-medium text-text-primary mb-2">
+                                        Retail Price (USD) <span class="text-accent">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="text-text-secondary">$</span>
+                                        </div>
+                                        <input type="number" 
+                                                id="retailPrice" 
+                                                name="retailPrice" 
+                                                class="input pl-8" 
+                                                placeholder="0.00"
+                                                step="0.01"
+                                                min="0"
+                                                required
+                                                aria-required="true">
+                                    </div>
+                                </div>
+
+                                <!-- Wholesale Price -->
+                                <div>
+                                    <label for="wholesalePrice" class="block text-sm font-medium text-text-primary mb-2">
+                                        Wholesale Price (USD)
+                                    </label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="text-text-secondary">$</span>
+                                        </div>
+                                        <input type="number" 
+                                                id="wholesalePrice" 
+                                                name="wholesalePrice" 
+                                                class="input pl-8" 
+                                                placeholder="0.00"
+                                                step="0.01"
+                                                min="0">
+                                    </div>
+                                </div>
+
+                                <!-- Insurance Reimbursement -->
+                                <div>
+                                    <label for="insurancePrice" class="block text-sm font-medium text-text-primary mb-2">
+                                        Insurance Reimbursement (USD)
+                                    </label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="text-text-secondary">$</span>
+                                        </div>
+                                        <input type="number" 
+                                                id="insurancePrice" 
+                                                name="insurancePrice" 
+                                                class="input pl-8" 
+                                                placeholder="0.00"
+                                                step="0.01"
+                                                min="0">
+                                    </div>
+                                </div>
+
+                                <!-- Margin Calculation Display -->
+                                <div class="md:col-span-2 p-4 bg-primary-50 border border-primary-200 rounded-lg">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-medium text-primary-700">Profit Margin</p>
+                                            <p class="text-xs text-primary-600 mt-1">Calculated from cost and retail price</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-2xl font-semibold text-primary-700" id="marginPercentage">0%</p>
+                                            <p class="text-xs text-primary-600" id="marginAmount">$0.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tax Information -->
+                                <div>
+                                    <label for="taxRate" class="block text-sm font-medium text-text-primary mb-2">
+                                        Tax Rate (%)
+                                    </label>
+                                    <input type="number" 
+                                            id="taxRate" 
+                                            name="taxRate" 
+                                            class="input" 
+                                            placeholder="0.00"
+                                            step="0.01"
+                                            min="0"
+                                            max="100">
+                                </div>
+
+                                <!-- Discount Eligible -->
+                                <div class="flex items-center h-full pt-8">
+                                    <input type="checkbox" 
+                                            id="discountEligible" 
+                                            name="discountEligible" 
+                                            class="w-4 h-4 text-primary border-border rounded focus:ring-2 focus:ring-primary-500 cursor-pointer">
+                                    <label for="discountEligible" class="ml-2 text-sm text-text-primary cursor-pointer">
+                                        Eligible for promotional discounts
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Supplier Tab -->
+                        <div id="supplierTab" class="tab-content hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Primary Supplier -->
+                                <div>
+                                    <label for="primarySupplier" class="block text-sm font-medium text-text-primary mb-2">
+                                        Primary Supplier <span class="text-accent">*</span>
+                                    </label>
+                                    <select id="primarySupplier" name="primarySupplier" class="input" required aria-required="true">
+                                        <option value="">Select supplier</option>
+                                        <option value="mckesson">McKesson Corporation</option>
+                                        <option value="cardinal">Cardinal Health</option>
+                                        <option value="amerisource">AmerisourceBergen</option>
+                                        <option value="morris">Morris & Dickson</option>
+                                    </select>
+                                </div>
+
+                                <!-- Supplier SKU -->
+                                <div>
+                                    <label for="supplierSku" class="block text-sm font-medium text-text-primary mb-2">
+                                        Supplier SKU
+                                    </label>
+                                    <input type="text" 
+                                            id="supplierSku" 
+                                            name="supplierSku" 
+                                            class="input" 
+                                            placeholder="Enter supplier product code">
+                                </div>
+
+                                <!-- Lead Time -->
+                                <div>
+                                    <label for="leadTime" class="block text-sm font-medium text-text-primary mb-2">
+                                        Lead Time (Days)
+                                    </label>
+                                    <input type="number" 
+                                            id="leadTime" 
+                                            name="leadTime" 
+                                            class="input" 
+                                            placeholder="e.g., 3"
+                                            min="0">
+                                </div>
+
+                                <!-- Minimum Order Quantity -->
+                                <div>
+                                    <label for="moq" class="block text-sm font-medium text-text-primary mb-2">
+                                        Minimum Order Quantity
+                                    </label>
+                                    <input type="number" 
+                                            id="moq" 
+                                            name="moq" 
+                                            class="input" 
+                                            placeholder="e.g., 10"
+                                            min="1">
+                                </div>
+
+                                <!-- Reorder Point -->
+                                <div>
+                                    <label for="reorderPoint" class="block text-sm font-medium text-text-primary mb-2">
+                                        Reorder Point <span class="text-accent">*</span>
+                                    </label>
+                                    <input type="number" 
+                                            id="reorderPoint" 
+                                            name="reorderPoint" 
+                                            class="input" 
+                                            placeholder="e.g., 50"
+                                            min="0"
+                                            required
+                                            aria-required="true">
+                                    <p class="mt-1 text-xs text-text-secondary">Alert when stock falls below this level</p>
+                                </div>
+
+                                <!-- Reorder Quantity -->
+                                <div>
+                                    <label for="reorderQuantity" class="block text-sm font-medium text-text-primary mb-2">
+                                        Reorder Quantity <span class="text-accent">*</span>
+                                    </label>
+                                    <input type="number" 
+                                            id="reorderQuantity" 
+                                            name="reorderQuantity" 
+                                            class="input" 
+                                            placeholder="e.g., 200"
+                                            min="1"
+                                            required
+                                            aria-required="true">
+                                </div>
+
+                                <!-- Auto-Order -->
+                                <div class="md:col-span-2 flex items-center">
+                                    <input type="checkbox" 
+                                            id="autoOrder" 
+                                            name="autoOrder" 
+                                            class="w-4 h-4 text-primary border-border rounded focus:ring-2 focus:ring-primary-500 cursor-pointer">
+                                    <label for="autoOrder" class="ml-2 text-sm text-text-primary cursor-pointer">
+                                        Enable automatic reordering when stock reaches reorder point
+                                    </label>
+                                </div>
+
+                                <!-- Supplier Contact -->
+                                <div class="md:col-span-2">
+                                    <label for="supplierContact" class="block text-sm font-medium text-text-primary mb-2">
+                                        Supplier Contact Information
+                                    </label>
+                                    <textarea id="supplierContact" 
+                                                name="supplierContact" 
+                                                rows="2" 
+                                                class="input" 
+                                                placeholder="Contact name, phone, email"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Storage Tab -->
+                        <div id="storageTab" class="tab-content hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Storage Location -->
+                                <div>
+                                    <label for="storageLocation" class="block text-sm font-medium text-text-primary mb-2">
+                                        Storage Location <span class="text-accent">*</span>
+                                    </label>
+                                    <select id="storageLocation" name="storageLocation" class="input" required aria-required="true">
+                                        <option value="">Select location</option>
+                                        <option value="shelf-a">Shelf A (General)</option>
+                                        <option value="shelf-b">Shelf B (Refrigerated)</option>
+                                        <option value="shelf-c">Shelf C (Controlled)</option>
+                                        <option value="vault">Secure Vault</option>
+                                        <option value="freezer">Freezer</option>
+                                    </select>
+                                </div>
+
+                                <!-- Bin/Slot Number -->
+                                <div>
+                                    <label for="binNumber" class="block text-sm font-medium text-text-primary mb-2">
+                                        Bin/Slot Number
+                                    </label>
+                                    <input type="text" 
+                                            id="binNumber" 
+                                            name="binNumber" 
+                                            class="input" 
+                                            placeholder="e.g., A-12-3">
+                                </div>
+
+                                <!-- Temperature Requirements -->
+                                <div>
+                                    <label for="tempMin" class="block text-sm font-medium text-text-primary mb-2">
+                                        Temperature Range (°F)
+                                    </label>
+                                    <div class="flex gap-2 items-center">
+                                        <input type="number" 
+                                                id="tempMin" 
+                                                name="tempMin" 
+                                                class="input flex-1" 
+                                                placeholder="Min"
+                                                step="0.1">
+                                        <span class="text-text-secondary">to</span>
+                                        <input type="number" 
+                                                id="tempMax" 
+                                                name="tempMax" 
+                                                class="input flex-1" 
+                                                placeholder="Max"
+                                                step="0.1">
+                                    </div>
+                                </div>
+
+                                <!-- Humidity Requirements -->
+                                <div>
+                                    <label for="humidityMax" class="block text-sm font-medium text-text-primary mb-2">
+                                        Max Humidity (%)
+                                    </label>
+                                    <input type="number" 
+                                            id="humidityMax" 
+                                            name="humidityMax" 
+                                            class="input" 
+                                            placeholder="e.g., 60"
+                                            min="0"
+                                            max="100">
+                                </div>
+
+                                <!-- Special Storage Requirements -->
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-text-primary mb-2">
+                                        Special Storage Requirements
+                                    </label>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" 
+                                                    id="refrigerated" 
+                                                    name="refrigerated" 
+                                                    class="w-4 h-4 text-primary border-border rounded focus:ring-2 focus:ring-primary-500 cursor-pointer">
+                                            <label for="refrigerated" class="ml-2 text-sm text-text-primary cursor-pointer">
+                                                Refrigeration Required (36-46°F)
+                                            </label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" 
+                                                    id="lightSensitive" 
+                                                    name="lightSensitive" 
+                                                    class="w-4 h-4 text-primary border-border rounded focus:ring-2 focus:ring-primary-500 cursor-pointer">
+                                            <label for="lightSensitive" class="ml-2 text-sm text-text-primary cursor-pointer">
+                                                Light Sensitive (Store in dark container)
+                                            </label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" 
+                                                    id="hazardous" 
+                                                    name="hazardous" 
+                                                    class="w-4 h-4 text-primary border-border rounded focus:ring-2 focus:ring-primary-500 cursor-pointer">
+                                            <label for="hazardous" class="ml-2 text-sm text-text-primary cursor-pointer">
+                                                Hazardous Material (Special handling required)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Storage Notes -->
+                                <div class="md:col-span-2">
+                                    <label for="storageNotes" class="block text-sm font-medium text-text-primary mb-2">
+                                        Storage Notes
+                                    </label>
+                                    <textarea id="storageNotes" 
+                                                name="storageNotes" 
+                                                rows="2" 
+                                                class="input" 
+                                                placeholder="Additional storage instructions or precautions"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Regulatory Tab -->
+                        <div id="regulatoryTab" class="tab-content hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- DEA Schedule -->
+                                <div>
+                                    <label for="deaSchedule" class="block text-sm font-medium text-text-primary mb-2">
+                                        DEA Schedule
+                                    </label>
+                                    <select id="deaSchedule" name="deaSchedule" class="input">
+                                        <option value="">Not Controlled</option>
+                                        <option value="schedule-2">Schedule II</option>
+                                        <option value="schedule-3">Schedule III</option>
+                                        <option value="schedule-4">Schedule IV</option>
+                                        <option value="schedule-5">Schedule V</option>
+                                    </select>
+                                </div>
+
+                                <!-- FDA Approval Status -->
+                                <div>
+                                    <label for="fdaStatus" class="block text-sm font-medium text-text-primary mb-2">
+                                        FDA Approval Status
+                                    </label>
+                                    <select id="fdaStatus" name="fdaStatus" class="input">
+                                        <option value="approved">FDA Approved</option>
+                                        <option value="otc">OTC Approved</option>
+                                        <option value="investigational">Investigational</option>
+                                        <option value="not-applicable">Not Applicable</option>
+                                    </select>
+                                </div>
+
+                                <!-- Lot Number -->
+                                <div>
+                                    <label for="lotNumber" class="block text-sm font-medium text-text-primary mb-2">
+                                        Current Lot Number
+                                    </label>
+                                    <input type="text" 
+                                            id="lotNumber" 
+                                            name="lotNumber" 
+                                            class="input" 
+                                            placeholder="Enter lot/batch number">
+                                </div>
+
+                                <!-- Expiration Date -->
+                                <div>
+                                    <label for="expirationDate" class="block text-sm font-medium text-text-primary mb-2">
+                                        Expiration Date
+                                    </label>
+                                    <input type="date" 
+                                            id="expirationDate" 
+                                            name="expirationDate" 
+                                            class="input">
+                                </div>
+
+                                <!-- Prescription Required -->
+                                <div class="md:col-span-2 flex items-center">
+                                    <input type="checkbox" 
+                                            id="prescriptionRequired" 
+                                            name="prescriptionRequired" 
+                                            class="w-4 h-4 text-primary border-border rounded focus:ring-2 focus:ring-primary-500 cursor-pointer">
+                                    <label for="prescriptionRequired" class="ml-2 text-sm text-text-primary cursor-pointer">
+                                        Prescription Required
+                                    </label>
+                                </div>
+
+                                <!-- Therapeutic Class -->
+                                <div>
+                                    <label for="therapeuticClass" class="block text-sm font-medium text-text-primary mb-2">
+                                        Therapeutic Class
+                                    </label>
+                                    <input type="text" 
+                                            id="therapeuticClass" 
+                                            name="therapeuticClass" 
+                                            class="input" 
+                                            placeholder="e.g., Analgesic, Antibiotic"
+                                            list="therapeuticSuggestions">
+                                    <datalist id="therapeuticSuggestions">
+                                        <option value="Analgesic">
+                                        <option value="Antibiotic">
+                                        <option value="Antihypertensive">
+                                        <option value="Antihistamine">
+                                    </datalist>
+                                </div>
+
+                                <!-- Indication -->
+                                <div>
+                                    <label for="indication" class="block text-sm font-medium text-text-primary mb-2">
+                                        Primary Indication
+                                    </label>
+                                    <input type="text" 
+                                            id="indication" 
+                                            name="indication" 
+                                            class="input" 
+                                            placeholder="e.g., Pain relief, Infection">
+                                </div>
+
+                                <!-- Warnings/Precautions -->
+                                <div class="md:col-span-2">
+                                    <label for="warnings" class="block text-sm font-medium text-text-primary mb-2">
+                                        Warnings & Precautions
+                                    </label>
+                                    <textarea id="warnings" 
+                                                name="warnings" 
+                                                rows="3" 
+                                                class="input" 
+                                                placeholder="Enter important warnings, contraindications, or precautions"></textarea>
+                                </div>
+
+                                <!-- Compliance Notes -->
+                                <div class="md:col-span-2">
+                                    <label for="complianceNotes" class="block text-sm font-medium text-text-primary mb-2">
+                                        Compliance & Regulatory Notes
+                                    </label>
+                                    <textarea id="complianceNotes" 
+                                                name="complianceNotes" 
+                                                rows="2" 
+                                                class="input" 
+                                                placeholder="Additional regulatory information or compliance requirements"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="flex items-center justify-between pt-6 border-t border-border">
+                            <button type="button" id="cancelBtn" class="btn btn-outline px-6 py-2.5">
+                                Cancel
+                            </button>
+                            <div class="flex items-center gap-3">
+                                <button type="button" id="previewBtn" class="btn btn-outline px-6 py-2.5">
+                                    <img src="https://api.iconify.design/mdi:eye-outline.svg?color=%232563EB" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                                    Preview
+                                </button>
+                                <button type="submit" class="btn btn-primary px-6 py-2.5 shadow-md">
+                                    <img src="https://api.iconify.design/mdi:check.svg?color=%23FFFFFF" alt="" class="w-5 h-5 mr-2" aria-hidden="true">
+                                    Add Item to Inventory
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sidebar - Quick Actions & Recent Items -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Quick Actions Card -->
+                <div class="card p-5">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Quick Actions</h3>
+                    <div class="space-y-2">
+                        <button type="button" class="w-full btn btn-outline justify-start px-4 py-2.5 text-sm">
+                            <img src="https://api.iconify.design/mdi:barcode-scan.svg?color=%232563EB" alt="" class="w-5 h-5 mr-3" aria-hidden="true">
+                            Scan Barcode
+                        </button>
+                        <button type="button" class="w-full btn btn-outline justify-start px-4 py-2.5 text-sm">
+                            <img src="https://api.iconify.design/mdi:file-document-outline.svg?color=%232563EB" alt="" class="w-5 h-5 mr-3" aria-hidden="true">
+                            View Templates
+                        </button>
+                        <button type="button" class="w-full btn btn-outline justify-start px-4 py-2.5 text-sm">
+                            <img src="https://api.iconify.design/mdi:content-duplicate.svg?color=%232563EB" alt="" class="w-5 h-5 mr-3" aria-hidden="true">
+                            Duplicate Item
+                        </button>
+                        <button type="button" class="w-full btn btn-outline justify-start px-4 py-2.5 text-sm">
+                            <img src="https://api.iconify.design/mdi:history.svg?color=%232563EB" alt="" class="w-5 h-5 mr-3" aria-hidden="true">
+                            View History
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Keyboard Shortcuts Card -->
+                <div class="card p-5">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Keyboard Shortcuts</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Save Draft</span>
+                            <kbd class="px-2 py-1 bg-background border border-border rounded text-xs font-mono">Ctrl+S</kbd>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Submit Form</span>
+                            <kbd class="px-2 py-1 bg-background border border-border rounded text-xs font-mono">Ctrl+Enter</kbd>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Next Tab</span>
+                            <kbd class="px-2 py-1 bg-background border border-border rounded text-xs font-mono">Tab</kbd>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Previous Tab</span>
+                            <kbd class="px-2 py-1 bg-background border border-border rounded text-xs font-mono">Shift+Tab</kbd>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-text-secondary">Cancel</span>
+                            <kbd class="px-2 py-1 bg-background border border-border rounded text-xs font-mono">Esc</kbd>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Added Items -->
+                <div class="card p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-text-primary">Recently Added</h3>
+                        <a href="inventory_analytics_center.html" class="text-sm text-primary hover:text-primary-700 focus-visible-ring rounded">
+                            View All
+                        </a>
+                    </div>
+                    <div class="space-y-3">
+                        <!-- Recent Item 1 -->
+                        <div class="flex items-start gap-3 p-3 bg-background rounded-lg hover:bg-primary-50 transition-colors cursor-pointer">
+                            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <img src="https://api.iconify.design/mdi:pill.svg?color=%232563EB" alt="" class="w-6 h-6" aria-hidden="true">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-text-primary truncate">Amoxicillin 500mg</p>
+                                <p class="text-xs text-text-secondary">NDC: 00093-4155-73</p>
+                                <p class="text-xs text-success-600 mt-1">Added 2 hours ago</p>
+                            </div>
+                        </div>
+
+                        <!-- Recent Item 2 -->
+                        <div class="flex items-start gap-3 p-3 bg-background rounded-lg hover:bg-primary-50 transition-colors cursor-pointer">
+                            <div class="flex-shrink-0 w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                                <img src="https://api.iconify.design/mdi:bottle-tonic-plus.svg?color=%23059669" alt="" class="w-6 h-6" aria-hidden="true">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-text-primary truncate">Ibuprofen 200mg</p>
+                                <p class="text-xs text-text-secondary">NDC: 50580-0506-01</p>
+                                <p class="text-xs text-success-600 mt-1">Added 5 hours ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Help & Support Card -->
+                <div class="card p-5 bg-primary-50 border-primary-200">
+                    <div class="flex items-start gap-3">
+                        <img src="https://api.iconify.design/mdi:help-circle-outline.svg?color=%232563EB" alt="" class="w-6 h-6 flex-shrink-0 mt-0.5" aria-hidden="true">
+                        <div>
+                            <h4 class="text-sm font-semibold text-primary-700 mb-1">Need Help?</h4>
+                            <p class="text-xs text-primary-600 mb-3">Access our comprehensive guide for adding inventory items.</p>
+                            <a href="javascript:void(0)" class="text-sm text-primary hover:text-primary-700 font-medium focus-visible-ring rounded">
+                                View Documentation →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bulk Import Modal -->
+    <div id="bulkImportModal" class="fixed inset-0 bg-text-primary/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="card max-w-2xl w-full p-6 animate-slide-up">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-text-primary">Bulk Import Items</h3>
+                <button type="button" id="closeBulkImportBtn" class="text-text-secondary hover:text-text-primary focus-visible-ring rounded p-1" aria-label="Close bulk import modal">
+                    <img src="https://api.iconify.design/mdi:close.svg?color=%236B7280" alt="" class="w-6 h-6" aria-hidden="true">
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="p-4 bg-primary-50 border border-primary-200 rounded-lg">
+                    <p class="text-sm text-primary-700 mb-2">
+                        <img src="https://api.iconify.design/mdi:information-outline.svg?color=%232563EB" alt="" class="w-4 h-4 inline mr-1" aria-hidden="true">
+                        Upload a CSV file with inventory items. Download our template to ensure proper formatting.
+                    </p>
+                    <a href="javascript:void(0)" class="text-sm text-primary hover:text-primary-700 font-medium focus-visible-ring rounded">
+                        Download CSV Template
+                    </a>
+                </div>
+                <div class="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer">
+                    <img src="https://api.iconify.design/mdi:cloud-upload-outline.svg?color=%236B7280" alt="" class="w-12 h-12 mx-auto mb-3" aria-hidden="true">
+                    <p class="text-sm font-medium text-text-primary mb-1">Drop CSV file here or click to browse</p>
+                    <p class="text-xs text-text-secondary">Maximum file size: 10MB</p>
+                    <input type="file" accept=".csv" class="hidden" id="csvFileInput">
+                </div>
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-border">
+                    <button type="button" class="btn btn-outline px-4 py-2">Cancel</button>
+                    <button type="button" class="btn btn-primary px-4 py-2">Upload & Process</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border mt-12">
+        <div class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-sm text-text-secondary">
+                    © 2025 PharmaCrew. All Rights Reserved.
+                </p>
+                <div class="flex items-center gap-4 text-sm">
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary focus-visible-ring rounded">Privacy Policy</a>
+                    <span class="text-border">|</span>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary focus-visible-ring rounded">Terms of Service</a>
+                    <span class="text-border">|</span>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary focus-visible-ring rounded">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

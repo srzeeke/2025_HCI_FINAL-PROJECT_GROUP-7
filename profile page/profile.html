@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Profile — ShiftManager</title>
+
+    <!-- Use Inter font for closer match -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+    <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="brand">ShiftManager</div>
+        <nav class="menu">
+        <a href="#" class="menu-item">Dashboard</a>
+        <a href="#" class="menu-item">Schedule</a>
+        <a href="#" class="menu-item">Messages</a>
+        <a href="#" class="menu-item">Notifications</a>
+        <a href="#" class="menu-item active">Profile</a>
+        <a href="#" class="menu-item logout" id="sidebarLogout">Log out</a>
+        </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        <!-- topbar -->
+        <header class="topbar">
+        <div class="top-left">
+            <button class="back" id="backBtn">← Back</button>
+            <h1 class="top-title">User Profile</h1>
+        </div>
+
+        <div class="top-right">
+            <div class="search-wrap">
+            <input class="search" placeholder="Search…">
+            </div>
+            <button class="btn ghost" id="changePhoto">Change Photo</button>
+            <div class="avatar">JD</div>
+        </div>
+        </header>
+
+        <!-- content -->
+        <section class="content">
+        <div class="content-inner">
+
+            <!-- Left: form card -->
+            <div class="card form-card">
+            <div class="card-header">
+                <div class="card-title">Profile</div>
+                <div class="card-actions">
+                <button class="btn ghost small" id="cancelBtn">Cancel</button>
+                <button class="btn primary" id="saveBtn">Save</button>
+                </div>
+            </div>
+
+            <form id="profileForm" class="profile-form" autocomplete="off" novalidate>
+                <div class="field">
+                <label for="fullName">Full Name</label>
+                <input id="fullName" name="fullName" type="text" value="John Doe" />
+                </div>
+
+                <div class="field">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" value="johndoe" />
+                </div>
+
+                <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" value="john@example.com" />
+                </div>
+
+                <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" value="+1 (555) 123-4567" />
+                </div>
+
+                <div class="field">
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" rows="5">Tell us about yourself...</textarea>
+                </div>
+
+                <div class="form-footer">
+                <button type="button" class="btn danger" id="logoutBtn">Log Out</button>
+                <div class="save-note small">Changes are saved locally (demo)</div>
+                </div>
+            </form>
+            </div>
+
+            <!-- Right: settings card -->
+            <aside class="card side-card" aria-label="Privacy and notification settings">
+            <h3 class="side-title">Privacy Settings</h3>
+            <div class="switch-row">
+                <div class="switch-label">Public profile</div>
+                <label class="switch">
+                <input id="publicProfile" type="checkbox" checked>
+                <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="switch-row">
+                <div class="switch-label">Show phone</div>
+                <label class="switch">
+                <input id="showPhone" type="checkbox">
+                <span class="slider"></span>
+                </label>
+            </div>
+
+            <hr class="divider" />
+
+            <h3 class="side-title">Notification Preferences</h3>
+
+            <div class="notif">
+                <label class="notif-item">
+                <div class="notif-text">
+                    <div class="notif-name">Push Notifications</div>
+                    <div class="notif-sub">Receive push notifications on your device</div>
+                </div>
+                <label class="switch">
+                    <input id="prefPush" type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+                </label>
+
+                <label class="notif-item">
+                <div class="notif-text">
+                    <div class="notif-name">Email Notifications</div>
+                    <div class="notif-sub">Get updates and summaries via email</div>
+                </div>
+                <label class="switch">
+                    <input id="prefEmail" type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+                </label>
+
+                <label class="notif-item">
+                <div class="notif-text">
+                    <div class="notif-name">New Messages</div>
+                    <div class="notif-sub">Notify me when I receive new messages</div>
+                </div>
+                <label class="switch">
+                    <input id="prefMessages" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                </label>
+
+                <label class="notif-item">
+                <div class="notif-text">
+                    <div class="notif-name">Stock Alerts</div>
+                    div class="notif-sub">Get notified about low stock and inventory updates</div>
+                </div>
+                <label class="switch">
+                    <input id="prefStock" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                </label>
+
+                <label class="notif-item">
+                <div class="notif-text">
+                    <div class="notif-name">Shift Time Reminders</div>
+                    <div class="notif-sub">Receive reminders about your upcoming shifts</div>
+                </div>
+                <label class="switch">
+                    <input id="prefReminders" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                </label>
+            </div>
+            </aside>
+        </div>
+        </section>
+    </main>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>
