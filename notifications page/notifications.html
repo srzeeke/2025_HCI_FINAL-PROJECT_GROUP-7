@@ -26,21 +26,19 @@
                     </div>
                 </div>
 
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
-                    <a href="business_overview_dashboard.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary hover:bg-primary-50 rounded-md transition-colors focus-visible-ring">
-                        Dashboard
-                    </a>
-                    <a href="team_directory.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary hover:bg-primary-50 rounded-md transition-colors focus-visible-ring">
-                        Team
-                    </a>
-                    <a href="inventory_analytics_center.html" class="px-3 py-2 text-sm font-medium text-text-secondary hover:text-primary hover:bg-primary-50 rounded-md transition-colors focus-visible-ring">
-                        Inventory
-                    </a>
-                    <a href="push_notification_testing_interface.html" class="px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md transition-colors focus-visible-ring" aria-current="page">
-                        Notifications
-                    </a>
-                </nav>
+<div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="brand">ZFF</div>
+        <nav class="menu">
+        <a href="#" class="menu-item">Dashboard</a>
+        <a href="#" class="menu-item">Schedule</a>
+        <a href="#" class="menu-item">Messages</a>
+        <a href="#" class="menu-item">Notifications</a>
+        <a href="#" class="menu-item active">Profile</a>
+        <a href="#" class="menu-item logout" id="sidebarLogout">Log out</a>
+        </nav>
+    </aside>
 
                 <!-- User Profile -->
                 <div class="flex items-center gap-3">
@@ -50,9 +48,9 @@
                     </button>
                     <div class="flex items-center gap-2 pl-3 border-l border-border">
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" 
-                             alt="Profile picture of Sarah Johnson, Pharmacy Manager" 
-                             class="w-8 h-8 rounded-full object-cover"
-                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                                alt="Profile picture of Sarah Johnson, Pharmacy Manager" 
+                                class="w-8 h-8 rounded-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
                         <div class="hidden sm:block">
                             <p class="text-sm font-medium text-text-primary">Sarah Johnson</p>
                             <p class="text-xs text-text-secondary">Manager</p>
