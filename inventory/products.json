@@ -1,0 +1,902 @@
+[
+  {
+    "id": "prod-001",
+    "basic": {
+      "itemName": "Paracetamol 500mg",
+      "genericName": "Acetaminophen",
+      "brandName": "Tylenol",
+      "ndcNumber": "50580-600-01",
+      "barcode": "036800133001",
+      "manufacturer": "Johnson & Johnson",
+      "category": "otc",
+      "dosageForm": "tablet",
+      "strength": { "value": 500, "unit": "mg" },
+      "package": { "size": 100, "unit": "tablets" },
+      "description": "Pain reliever and fever reducer",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd2j6dbq0eux0bg.cloudfront.net%2Fimages%2F22962135%2F3634764592.jpg&f=1&nofb=1&ipt=709aeb2c9eca17169596b72afb8066f379054b078b7f4de212d2f33bc5d169f6"
+    },
+    "pricing": {
+      "costPrice": 2.5,
+      "retailPrice": 5.49,
+      "wholesalePrice": 2.1,
+      "insurancePrice": 3.8,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "mckesson",
+      "supplierSku": "MCK-001",
+      "leadTimeDays": 3,
+      "moq": 20,
+      "reorderPoint": 40,
+      "reorderQuantity": 200,
+      "autoOrder": true,
+      "contact": "support@mckesson.com"
+    },
+    "storage": {
+      "location": "shelf-a",
+      "binNumber": "A-01-1",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-001",
+      "expirationDate": "2026-12-31",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Analgesic",
+      "indication": "Pain relief",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 120, "status": "ok" }
+  },
+
+  {
+    "id": "prod-002",
+    "basic": {
+      "itemName": "Paracetamol 500mg",
+      "genericName": "Acetaminophen",
+      "brandName": "Panadol",
+      "ndcNumber": "50580-600-02",
+      "barcode": "5000158103214",
+      "manufacturer": "GSK",
+      "category": "otc",
+      "dosageForm": "tablet",
+      "strength": { "value": 500, "unit": "mg" },
+      "package": { "size": 24, "unit": "tablets" },
+      "description": "Fast pain relief tablets",
+      "imageUrl": "https://assets.woolworths.com.au/images/1005/750755.jpg?impolicy=wowsmkqiema&w=600&h=600"
+    },
+    "pricing": {
+      "costPrice": 1.8,
+      "retailPrice": 4.29,
+      "wholesalePrice": 1.5,
+      "insurancePrice": 3.1,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "cardinal",
+      "supplierSku": "CAR-002",
+      "leadTimeDays": 4,
+      "moq": 30,
+      "reorderPoint": 60,
+      "reorderQuantity": 300,
+      "autoOrder": true,
+      "contact": "sales@cardinal.com"
+    },
+    "storage": {
+      "location": "shelf-a",
+      "binNumber": "A-01-2",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-002",
+      "expirationDate": "2025-10-30",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Analgesic",
+      "indication": "Pain relief",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 18, "status": "warning" }
+  },
+
+  {
+    "id": "prod-003",
+    "basic": {
+      "itemName": "Ibuprofen 400mg",
+      "genericName": "Ibuprofen",
+      "brandName": "Advil",
+      "ndcNumber": "0573-0164-20",
+      "barcode": "305730164205",
+      "manufacturer": "Pfizer",
+      "category": "otc",
+      "dosageForm": "tablet",
+      "strength": { "value": 400, "unit": "mg" },
+      "package": { "size": 50, "unit": "tablets" },
+      "description": "Anti-inflammatory pain relief",
+      "imageUrl": "https://www.evanspharmacy.com/images/ibuprofen-400mg-tablets-p280-698_medium.jpg"
+    },
+    "pricing": {
+      "costPrice": 2.9,
+      "retailPrice": 6.99,
+      "wholesalePrice": 2.4,
+      "insurancePrice": 4.9,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "amerisource",
+      "supplierSku": "AMS-003",
+      "leadTimeDays": 2,
+      "moq": 25,
+      "reorderPoint": 30,
+      "reorderQuantity": 150,
+      "autoOrder": true,
+      "contact": "orders@amerisource.com"
+    },
+    "storage": {
+      "location": "shelf-b",
+      "binNumber": "B-02-1",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-003",
+      "expirationDate": "2027-01-15",
+      "prescriptionRequired": false,
+      "therapeuticClass": "NSAID",
+      "indication": "Pain and inflammation",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 0, "status": "out" }
+  },
+
+  {
+    "id": "prod-004",
+    "basic": {
+      "itemName": "Ibuprofen 400mg",
+      "genericName": "Ibuprofen",
+      "brandName": "Nurofen",
+      "ndcNumber": "50580-700-01",
+      "barcode": "4005800150502",
+      "manufacturer": "Reckitt",
+      "category": "otc",
+      "dosageForm": "tablet",
+      "strength": { "value": 400, "unit": "mg" },
+      "package": { "size": 30, "unit": "tablets" },
+      "description": "Fast-acting ibuprofen tablets",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F5.imimg.com%2Fdata5%2FSELLER%2FDefault%2F2023%2F6%2F319597573%2FMH%2FNE%2FSR%2F135658020%2Fibuprofen-400-mg-bp-tablets-1000x1000.jpg&f=1&nofb=1&ipt=431663943dbbe5b30dbdb0e9e15356e555fcaa96ca747e9af506d14c469a14f9"
+    },
+    "pricing": {
+      "costPrice": 2.4,
+      "retailPrice": 6.2,
+      "wholesalePrice": 2.0,
+      "insurancePrice": 4.5,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "mckesson",
+      "supplierSku": "MCK-004",
+      "leadTimeDays": 3,
+      "moq": 20,
+      "reorderPoint": 35,
+      "reorderQuantity": 120,
+      "autoOrder": true,
+      "contact": "support@mckesson.com"
+    },
+    "storage": {
+      "location": "shelf-b",
+      "binNumber": "B-02-2",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-004",
+      "expirationDate": "2026-06-30",
+      "prescriptionRequired": false,
+      "therapeuticClass": "NSAID",
+      "indication": "Pain and inflammation",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 75, "status": "ok" }
+  },
+
+  {
+    "id": "prod-005",
+    "basic": {
+      "itemName": "Amoxicillin 500mg",
+      "genericName": "Amoxicillin",
+      "brandName": "Amoxil",
+      "ndcNumber": "00093-4155-73",
+      "barcode": "00093415573",
+      "manufacturer": "GSK",
+      "category": "prescription",
+      "dosageForm": "capsule",
+      "strength": { "value": 500, "unit": "mg" },
+      "package": { "size": 21, "unit": "capsules" },
+      "description": "Broad-spectrum antibiotic",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fspmc.gov.lk%2Fresources%2F149%2Ficon.jpg&f=1&nofb=1&ipt=bbd7d68325b19252b11d5c467f18d317d61c1264f376c5b520622291b34f6dee"
+    },
+    "pricing": {
+      "costPrice": 4.8,
+      "retailPrice": 12.99,
+      "wholesalePrice": 4.1,
+      "insurancePrice": 9.5,
+      "taxRate": 5,
+      "discountEligible": false
+    },
+    "supplier": {
+      "primarySupplier": "amerisource",
+      "supplierSku": "AMS-005",
+      "leadTimeDays": 2,
+      "moq": 10,
+      "reorderPoint": 15,
+      "reorderQuantity": 60,
+      "autoOrder": true,
+      "contact": "orders@amerisource.com"
+    },
+    "storage": {
+      "location": "shelf-c",
+      "binNumber": "C-01-1",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-005",
+      "expirationDate": "2026-03-20",
+      "prescriptionRequired": true,
+      "therapeuticClass": "Antibiotic",
+      "indication": "Bacterial infection",
+      "warnings": "Complete full course",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 22, "status": "ok" }
+  }
+,
+  {
+    "id": "prod-006",
+    "basic": {
+      "itemName": "Amoxicillin 500mg",
+      "genericName": "Amoxicillin",
+      "brandName": "Teva",
+      "ndcNumber": "0093-4155-06",
+      "barcode": "0093415506",
+      "manufacturer": "Teva Pharmaceuticals",
+      "category": "prescription",
+      "dosageForm": "capsule",
+      "strength": { "value": 500, "unit": "mg" },
+      "package": { "size": 30, "unit": "capsules" },
+      "description": "Generic amoxicillin antibiotic",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc8.alamy.com%2Fcomp%2F2HX22A2%2Fblister-pack-of-amoxicillin-capsules-500-mg-noumed-antibiotics-used-to-treat-a-number-of-bacterial-infections-antibiotic-capsules-antibiotics-pills-2HX22A2.jpg&f=1&nofb=1&ipt=dce0aa9ed10b560d0de86b993145bba4a0fbf6e814bcb173dbed5bab11616a7e"
+    },
+    "pricing": {
+      "costPrice": 3.9,
+      "retailPrice": 10.5,
+      "wholesalePrice": 3.4,
+      "insurancePrice": 8.2,
+      "taxRate": 5,
+      "discountEligible": false
+    },
+    "supplier": {
+      "primarySupplier": "mckesson",
+      "supplierSku": "MCK-006",
+      "leadTimeDays": 3,
+      "moq": 10,
+      "reorderPoint": 20,
+      "reorderQuantity": 80,
+      "autoOrder": true,
+      "contact": "support@mckesson.com"
+    },
+    "storage": {
+      "location": "shelf-c",
+      "binNumber": "C-01-2",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-006",
+      "expirationDate": "2026-08-15",
+      "prescriptionRequired": true,
+      "therapeuticClass": "Antibiotic",
+      "indication": "Bacterial infection",
+      "warnings": "Complete full course",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 14, "status": "warning" }
+  },
+
+  {
+    "id": "prod-007",
+    "basic": {
+      "itemName": "Aspirin 325mg",
+      "genericName": "Acetylsalicylic Acid",
+      "brandName": "Bayer",
+      "ndcNumber": "0280-2001-01",
+      "barcode": "0280200101",
+      "manufacturer": "Bayer",
+      "category": "otc",
+      "dosageForm": "tablet",
+      "strength": { "value": 325, "unit": "mg" },
+      "package": { "size": 100, "unit": "tablets" },
+      "description": "Pain reliever and anti-inflammatory",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.kd8BZGdJllyskgFTPQURvgHaHa%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&f=1&ipt=d72cffdfc0eee7da198d12cd69738536ebb5f4ea3f9a60fc2dba32a55f697b30&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 2.1,
+      "retailPrice": 5.99,
+      "wholesalePrice": 1.8,
+      "insurancePrice": 4.2,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "cardinal",
+      "supplierSku": "CAR-007",
+      "leadTimeDays": 4,
+      "moq": 20,
+      "reorderPoint": 40,
+      "reorderQuantity": 200,
+      "autoOrder": true,
+      "contact": "sales@cardinal.com"
+    },
+    "storage": {
+      "location": "shelf-d",
+      "binNumber": "D-01-1",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-007",
+      "expirationDate": "2027-05-10",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Analgesic",
+      "indication": "Pain and inflammation",
+      "warnings": "Not for children",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 95, "status": "ok" }
+  },
+
+  {
+    "id": "prod-008",
+    "basic": {
+      "itemName": "Aspirin 325mg",
+      "genericName": "Acetylsalicylic Acid",
+      "brandName": "UPSA",
+      "ndcNumber": "50580-800-01",
+      "barcode": "3400932786249",
+      "manufacturer": "UPSA",
+      "category": "otc",
+      "dosageForm": "tablet",
+      "strength": { "value": 325, "unit": "mg" },
+      "package": { "size": 20, "unit": "tablets" },
+      "description": "Effervescent aspirin tablets",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.raLW6BpHYSUwfgWHDKIh_QHaHa%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&f=1&ipt=0ccb395802370135a981fff29ba8de3bcb3d1e8205c6bbabfc28ae34a8ccb9c8&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 1.6,
+      "retailPrice": 4.5,
+      "wholesalePrice": 1.3,
+      "insurancePrice": 3.2,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "mckesson",
+      "supplierSku": "MCK-008",
+      "leadTimeDays": 3,
+      "moq": 30,
+      "reorderPoint": 50,
+      "reorderQuantity": 250,
+      "autoOrder": true,
+      "contact": "support@mckesson.com"
+    },
+    "storage": {
+      "location": "shelf-d",
+      "binNumber": "D-01-2",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": true,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-008",
+      "expirationDate": "2026-11-01",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Analgesic",
+      "indication": "Pain relief",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 12, "status": "warning" }
+  },
+
+  {
+    "id": "prod-009",
+    "basic": {
+      "itemName": "Vitamin C 1000mg",
+      "genericName": "Ascorbic Acid",
+      "brandName": "Nature Made",
+      "ndcNumber": "0316-0400-01",
+      "barcode": "0316040001",
+      "manufacturer": "Nature Made",
+      "category": "supplement",
+      "dosageForm": "tablet",
+      "strength": { "value": 1000, "unit": "mg" },
+      "package": { "size": 60, "unit": "tablets" },
+      "description": "Immune system support",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.VHQ2vXlMe-DHnx-ImU9QDQHaHa%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&f=1&ipt=9c3a9faf5ffe955fa8427ceed0a24b96c27b6d8b4b5f453214de9557d7a18d2b&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 4.2,
+      "retailPrice": 11.99,
+      "wholesalePrice": 3.8,
+      "insurancePrice": 0,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "vitaminshop",
+      "supplierSku": "VIT-009",
+      "leadTimeDays": 5,
+      "moq": 15,
+      "reorderPoint": 25,
+      "reorderQuantity": 100,
+      "autoOrder": false,
+      "contact": "orders@vitaminshop.com"
+    },
+    "storage": {
+      "location": "shelf-e",
+      "binNumber": "E-01-1",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "supplement",
+      "lotNumber": "LOT-009",
+      "expirationDate": "2027-02-28",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Vitamin",
+      "indication": "Immune support",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 140, "status": "ok" }
+  }
+,
+  {
+    "id": "prod-010",
+    "basic": {
+      "itemName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "brandName": "Zyrtec",
+      "ndcNumber": "50580-900-01",
+      "barcode": "012345678910",
+      "manufacturer": "Johnson & Johnson",
+      "category": "otc",
+      "dosageForm": "tablet",
+      "strength": { "value": 10, "unit": "mg" },
+      "package": { "size": 30, "unit": "tablets" },
+      "description": "24-hour allergy relief",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.pZko-MCmRFizNBY9pSClrAHaHa%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&f=1&ipt=2d83f0d7fdaa85f977a2f54c3e559708a9b60294e67640b1d1b85c8406de9f1b&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 5.2,
+      "retailPrice": 13.99,
+      "wholesalePrice": 4.8,
+      "insurancePrice": 10.2,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "mckesson",
+      "supplierSku": "MCK-010",
+      "leadTimeDays": 3,
+      "moq": 15,
+      "reorderPoint": 25,
+      "reorderQuantity": 100,
+      "autoOrder": true,
+      "contact": "support@mckesson.com"
+    },
+    "storage": {
+      "location": "shelf-f",
+      "binNumber": "F-01-1",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-010",
+      "expirationDate": "2027-09-30",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Antihistamine",
+      "indication": "Allergy relief",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 60, "status": "ok" }
+  },
+
+  {
+    "id": "prod-011",
+    "basic": {
+      "itemName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "brandName": "Reactine",
+      "ndcNumber": "50580-900-02",
+      "barcode": "012345678911",
+      "manufacturer": "Pfizer",
+      "category": "otc",
+      "dosageForm": "tablet",
+      "strength": { "value": 10, "unit": "mg" },
+      "package": { "size": 20, "unit": "tablets" },
+      "description": "Fast allergy symptom relief",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.JbjKxNOHgp46jyJ050sYVQHaFy%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&f=1&ipt=7bcd28e6f558906669eb413676946634474960fdceda52c0731057482cb4ba0f&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 4.6,
+      "retailPrice": 11.49,
+      "wholesalePrice": 4.1,
+      "insurancePrice": 9.0,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "cardinal",
+      "supplierSku": "CAR-011",
+      "leadTimeDays": 4,
+      "moq": 20,
+      "reorderPoint": 30,
+      "reorderQuantity": 120,
+      "autoOrder": true,
+      "contact": "sales@cardinal.com"
+    },
+    "storage": {
+      "location": "shelf-f",
+      "binNumber": "F-01-2",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-011",
+      "expirationDate": "2027-06-15",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Antihistamine",
+      "indication": "Allergy relief",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 28, "status": "warning" }
+  },
+
+  {
+    "id": "prod-012",
+    "basic": {
+      "itemName": "Omeprazole 20mg",
+      "genericName": "Omeprazole",
+      "brandName": "Prilosec",
+      "ndcNumber": "0185-0030-01",
+      "barcode": "012345678912",
+      "manufacturer": "AstraZeneca",
+      "category": "otc",
+      "dosageForm": "capsule",
+      "strength": { "value": 20, "unit": "mg" },
+      "package": { "size": 14, "unit": "capsules" },
+      "description": "Reduces stomach acid",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.OCgvB993pEvhi1gLYUJNnwHaHa%3Fpid%3DApi&f=1&ipt=0700062699a46556cd7c1c9b92ff5e709a88e401f9ba9d5f1e391560440c676f&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 6.1,
+      "retailPrice": 15.99,
+      "wholesalePrice": 5.6,
+      "insurancePrice": 12.0,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "amerisource",
+      "supplierSku": "AMS-012",
+      "leadTimeDays": 2,
+      "moq": 15,
+      "reorderPoint": 20,
+      "reorderQuantity": 80,
+      "autoOrder": true,
+      "contact": "orders@amerisource.com"
+    },
+    "storage": {
+      "location": "shelf-g",
+      "binNumber": "G-01-1",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-012",
+      "expirationDate": "2027-11-30",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Proton Pump Inhibitor",
+      "indication": "Heartburn",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 85, "status": "ok" }
+  },
+
+  {
+    "id": "prod-013",
+    "basic": {
+      "itemName": "Multivitamin Adults",
+      "genericName": "Multivitamin",
+      "brandName": "Centrum",
+      "ndcNumber": "30045-123-01",
+      "barcode": "012345678913",
+      "manufacturer": "Pfizer",
+      "category": "supplement",
+      "dosageForm": "tablet",
+      "strength": { "value": 1, "unit": "tablet" },
+      "package": { "size": 90, "unit": "tablets" },
+      "description": "Daily multivitamin for adults",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.2VEvLPPgYVXpeiGOuhdrdQHaHa%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&f=1&ipt=fe826145bcc623ea0b629e1a0a9015991d56de737809432bfcf0e16179a55308&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 7.5,
+      "retailPrice": 18.99,
+      "wholesalePrice": 6.8,
+      "insurancePrice": 0,
+      "taxRate": 5,
+      "discountEligible": true
+    },
+    "supplier": {
+      "primarySupplier": "vitaminshop",
+      "supplierSku": "VIT-013",
+      "leadTimeDays": 5,
+      "moq": 10,
+      "reorderPoint": 15,
+      "reorderQuantity": 60,
+      "autoOrder": false,
+      "contact": "orders@vitaminshop.com"
+    },
+    "storage": {
+      "location": "shelf-h",
+      "binNumber": "H-01-1",
+      "temperature": { "min": 59, "max": 77 },
+      "humidityMax": 60,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "supplement",
+      "lotNumber": "LOT-013",
+      "expirationDate": "2028-01-31",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Vitamin",
+      "indication": "Daily nutrition",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 200, "status": "ok" }
+  },
+
+  {
+    "id": "prod-014",
+    "basic": {
+      "itemName": "Surgical Gloves",
+      "genericName": "Latex Gloves",
+      "brandName": "Medline",
+      "ndcNumber": "50789-014",
+      "barcode": "012345678914",
+      "manufacturer": "Medline",
+      "category": "medical-supply",
+      "dosageForm": "n/a",
+      "strength": { "value": 0, "unit": "" },
+      "package": { "size": 100, "unit": "gloves" },
+      "description": "Disposable latex surgical gloves",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.JY9AtdhvT5Kj2H1BKnfR7AHaHa%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&f=1&ipt=3edf6622dcccb56ecf379b114e682df09c0c976e572a7d5d1f52d1bea7a740d5&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 9.0,
+      "retailPrice": 22.99,
+      "wholesalePrice": 8.2,
+      "insurancePrice": 0,
+      "taxRate": 5,
+      "discountEligible": false
+    },
+    "supplier": {
+      "primarySupplier": "medline",
+      "supplierSku": "MED-014",
+      "leadTimeDays": 6,
+      "moq": 5,
+      "reorderPoint": 10,
+      "reorderQuantity": 50,
+      "autoOrder": false,
+      "contact": "orders@medline.com"
+    },
+    "storage": {
+      "location": "shelf-i",
+      "binNumber": "I-01-1",
+      "temperature": { "min": 50, "max": 86 },
+      "humidityMax": 70,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-014",
+      "expirationDate": "2029-12-31",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Medical Supply",
+      "indication": "Protection",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 35, "status": "ok" }
+  },
+
+  {
+    "id": "prod-015",
+    "basic": {
+      "itemName": "Face Masks",
+      "genericName": "Surgical Mask",
+      "brandName": "3M",
+      "ndcNumber": "50789-015",
+      "barcode": "012345678915",
+      "manufacturer": "3M",
+      "category": "medical-supply",
+      "dosageForm": "n/a",
+      "strength": { "value": 0, "unit": "" },
+      "package": { "size": 50, "unit": "masks" },
+      "description": "Disposable surgical face masks",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.ketWXBCRqlCny1T_wQGBtQHaHl%3Fcb%3Ducfimg2%26pid%3DApi%26ucfimg%3D1&f=1&ipt=4759dc14998b597561d85b863e8dda0be3ee1bc42584405af674d107603373bd&ipo=images"
+    },
+    "pricing": {
+      "costPrice": 6.5,
+      "retailPrice": 16.99,
+      "wholesalePrice": 6.0,
+      "insurancePrice": 0,
+      "taxRate": 5,
+      "discountEligible": false
+    },
+    "supplier": {
+      "primarySupplier": "medline",
+      "supplierSku": "MED-015",
+      "leadTimeDays": 5,
+      "moq": 10,
+      "reorderPoint": 20,
+      "reorderQuantity": 100,
+      "autoOrder": false,
+      "contact": "orders@medline.com"
+    },
+    "storage": {
+      "location": "shelf-i",
+      "binNumber": "I-01-2",
+      "temperature": { "min": 50, "max": 86 },
+      "humidityMax": 70,
+      "requirements": {
+        "refrigerated": false,
+        "lightSensitive": false,
+        "hazardous": false
+      },
+      "notes": ""
+    },
+    "regulatory": {
+      "deaSchedule": "",
+      "fdaStatus": "approved",
+      "lotNumber": "LOT-015",
+      "expirationDate": "2029-06-30",
+      "prescriptionRequired": false,
+      "therapeuticClass": "Medical Supply",
+      "indication": "Protection",
+      "warnings": "",
+      "complianceNotes": ""
+    },
+    "inventory": { "quantity": 0, "status": "out" }
+  }
+]
+
