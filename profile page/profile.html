@@ -1,87 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>User Profile</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - ZFF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-
-    <div class="app">
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="logo">ZFF</div>
-        <nav>
-        <a>Dashboard</a>
-        <a class="active">Schedule</a>
-        <a>Hours Tracking</a>
-        <a>Shift Swaps</a>
-        <a>Team Directory</a>
-        <a>Messages</a>
-        <a>Inventory</a>
-        <div class="divider"></div>
-        <a>Profile</a>
-        <a>Notifications</a>
-        </nav>
-    </aside>
-
-    <!-- Main -->
-    <main class="content">
-
-        <div class="top-bar">
-        <span class="back">← Back</span>
-        <div class="actions">
-            <button class="btn primary">Save</button>
-            <button class="btn secondary">Cancel</button>
-        </div>
-        </div>
-
-        <h1>User Profile</h1>
-
-        <div class="profile-card">
-
-        <!-- Left -->
-        <div class="left">
-            <img src="https://i.pravatar.cc/120?img=12" class="avatar" />
-            <button class="change-photo">Change Photo</button>
-
-            <div class="privacy">
-            <h3>Privacy Settings</h3>
-            <div class="input disabled">Phone<br><strong>+1 (555) 123-4567</strong></div>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-and-toggle-wrapper">
+                <div class="logo">ZFF</div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i> 
+                </button>
             </div>
-        </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> <span>Schedule</span></a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> <span>Hours Tracking</span></a></li>
+                    <li><a href="#"><i class="fas fa-exchange-alt"></i> <span>Shift Swaps</span></a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> <span>Team Directory</span></a></li>
+                    <li><a href="../messages/messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+                    <li><a href="#"><i class="fas fa-boxes"></i> <span>Inventory</span></a></li>
+                </ul>
+            </nav>
+            <div class="profile-nav">
+                <ul>
+                    <li class="active"><a href="profile.html"><i class="fas fa-user-circle"></i> <span>Profile</span></a></li>
+                    <li><a href="../notifications page/notifications.html"><i class="fas fa-bell"></i> <span>Notifications</span></a></li>
+                </ul>
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+            </div>
+        </aside>
 
-        <!-- Divider -->
-        <div class="divider-vertical"></div>
+        
+        <main class="content-area user-profile-page">
+            <div class="profile-header">
+                <a href="#" class="back-link"><i class="fas fa-chevron-left"></i> Back</a>
+                <h1>User Profile</h1>
+                <div class="profile-actions">
+                    <button class="save-btn">Save</button>
+                    <button class="cancel-btn">Cancel</button>
+                </div>
+            </div>
 
-        <!-- Right -->
-        <div class="right">
-            <label>Full Name:</label>
-            <input value="Rina Wilson" />
+            <div class="profile-card">
+                <div class="profile-layout">
+                    <div class="photo-section">
+                        <img src="aditya pratama.png" alt="User" class="profile-photo">
+                        <button class="change-photo-btn">Change Photo</button>
+                        <div class="privacy-box">
+                            <h3>Privacy Settings</h3>
+                            <div class="privacy-item">Phone<br>+1 (555) 123-4567</div>
+                        </div>
+                    </div>
 
-            <label>Username:</label>
-            <input value="RinaW" />
-
-            <label>Email:</label>
-            <input value="rinawilson@gmail.com" />
-
-            <label>Bio:</label>
-            <textarea>Tell us about yourself...</textarea>
-
-            <label>Phone:</label>
-            <input value="+62 855-1234-5678" />
-
-            <button class="logout">Log Out</button>
-        </div>
-
-        </div>
-    </main>
+                    <div class="details-section">
+                        <div class="form-group"><label>Full Name:</label><input type="text" value="Aditya Pratama"></div>
+                        <div class="form-group"><label>Username:</label><input type="text" value="aditya"></div>
+                        <div class="form-group"><label>Email:</label><input type="email" value="adityapratama@example.com"></div>
+                        <div class="form-group"><label>Bio:</label><textarea rows="3">Tell us about yourself...</textarea></div>
+                        <div class="form-group"><label>Phone:</label><input type="text" value="+62 8555-1234-5678"></div>
+                        <button class="log-out-btn">Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-
-    <script src="script.js"></script>
-    </body>
-    </html>
+    <script src="profile.js"></script>
+</body>
+</html>
