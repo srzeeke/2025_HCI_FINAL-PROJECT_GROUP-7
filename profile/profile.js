@@ -21,11 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateToggleIcon() {
         if (!icon) return;
         if (appContainer.classList.contains('sidebar-hidden')) {
-            // Hidden: Show Hamburger icon
             icon.classList.remove('fa-arrow-right');
             icon.classList.add('fa-bars'); 
         } else {
-            // Expanded: Show Arrow icon
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-arrow-right');
         }
