@@ -1,181 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Profile — ZFF</title>
-
-    <!-- Use Inter font for closer match -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="profile.css" />
+    <meta charset="UTF-8" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="layout">
-    <!-- SIDEBAR -->
-    <aside class="sidebar" role="navigation" aria-label="Main navigation">
-        <div class="brand">ZFF</div>
-        <nav class="menu">
-        <a href="#" class="menu-item">Dashboard</a>
-        <a href="#" class="menu-item">Inventory Item</a>
-        <a href="#" class="menu-item">Messages</a>
-        <a href="#" class="menu-item">Inventory Analytics</a>
-        <a href="#" class="menu-item active">Profile</a>
-        <a href="#" class="menu-item">Notifications</a>
-        <a href="#" class="menu-item logout" id="sidebarLogout">Log out</a>
+
+    <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">ZFF</div>
+        <nav>
+        <a>Dashboard</a>
+        <a class="active">Schedule</a>
+        <a>Hours Tracking</a>
+        <a>Shift Swaps</a>
+        <a>Team Directory</a>
+        <a>Messages</a>
+        <a>Inventory</a>
+        <div class="divider"></div>
+        <a>Profile</a>
+        <a>Notifications</a>
         </nav>
     </aside>
 
-    <!-- MAIN -->
-    <main class="main">
-        <!-- topbar -->
-        <header class="topbar">
-        <div class="top-left">
-            <button class="back" id="backBtn">← Back</button>
-            <h1 class="top-title">User Profile</h1>
+    <!-- Main -->
+    <main class="content">
+
+        <div class="top-bar">
+        <span class="back">← Back</span>
+        <div class="actions">
+            <button class="btn primary">Save</button>
+            <button class="btn secondary">Cancel</button>
+        </div>
         </div>
 
-        <div class="top-right">
-            <div class="search-wrap">
-            <input class="search" placeholder="Search…">
+        <h1>User Profile</h1>
+
+        <div class="profile-card">
+
+        <!-- Left -->
+        <div class="left">
+            <img src="https://i.pravatar.cc/120?img=12" class="avatar" />
+            <button class="change-photo">Change Photo</button>
+
+            <div class="privacy">
+            <h3>Privacy Settings</h3>
+            <div class="input disabled">Phone<br><strong>+1 (555) 123-4567</strong></div>
             </div>
-            <button class="btn ghost" id="changePhoto">Change Photo</button>
-            <div class="avatar">JD</div>
         </div>
-        </header>
 
-        <!-- content -->
-        <section class="content">
-        <div class="content-inner">
+        <!-- Divider -->
+        <div class="divider-vertical"></div>
 
-            <!-- Left: form card -->
-            <div class="card form-card">
-            <div class="card-header">
-                <div class="card-title">Profile</div>
-                <div class="card-actions">
-                <button class="btn ghost small" id="cancelBtn">Cancel</button>
-                <button class="btn primary" id="saveBtn">Save</button>
-                </div>
-            </div>
+        <!-- Right -->
+        <div class="right">
+            <label>Full Name:</label>
+            <input value="Rina Wilson" />
 
-            <form id="profileForm" class="profile-form" autocomplete="off" novalidate>
-                <div class="field">
-                <label for="fullName">Full Name</label>
-                <input id="fullName" name="fullName" type="text" value="John Doe" />
-                </div>
+            <label>Username:</label>
+            <input value="RinaW" />
 
-                <div class="field">
-                <label for="username">Username</label>
-                <input id="username" name="username" type="text" value="johndoe" />
-                </div>
+            <label>Email:</label>
+            <input value="rinawilson@gmail.com" />
 
-                <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" value="john@example.com" />
-                </div>
+            <label>Bio:</label>
+            <textarea>Tell us about yourself...</textarea>
 
-                <div class="field">
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" value="+1 (555) 123-4567" />
-                </div>
+            <label>Phone:</label>
+            <input value="+62 855-1234-5678" />
 
-                <div class="field">
-                <label for="bio">Bio</label>
-                <textarea id="bio" name="bio" rows="5">Tell us about yourself...</textarea>
-                </div>
-
-                <div class="form-footer">
-                <button type="button" class="btn danger" id="logoutBtn">Log Out</button>
-                <div class="save-note small">Changes are saved locally (demo)</div>
-                </div>
-            </form>
-            </div>
-
-            <!-- Right: settings card -->
-            <aside class="card side-card" aria-label="Privacy and notification settings">
-            <h3 class="side-title">Privacy Settings</h3>
-            <div class="switch-row">
-                <div class="switch-label">Public profile</div>
-                <label class="switch">
-                <input id="publicProfile" type="checkbox" checked>
-                <span class="slider"></span>
-                </label>
-            </div>
-
-            <div class="switch-row">
-                <div class="switch-label">Show phone</div>
-                <label class="switch">
-                <input id="showPhone" type="checkbox">
-                <span class="slider"></span>
-                </label>
-            </div>
-
-            <hr class="divider" />
-
-            <h3 class="side-title">Notification Preferences</h3>
-
-            <div class="notif">
-                <label class="notif-item">
-                <div class="notif-text">
-                    <div class="notif-name">Push Notifications</div>
-                    <div class="notif-sub">Receive push notifications on your device</div>
-                </div>
-                <label class="switch">
-                    <input id="prefPush" type="checkbox" checked>
-                    <span class="slider"></span>
-                </label>
-                </label>
-
-                <label class="notif-item">
-                <div class="notif-text">
-                    <div class="notif-name">Email Notifications</div>
-                    <div class="notif-sub">Get updates and summaries via email</div>
-                </div>
-                <label class="switch">
-                    <input id="prefEmail" type="checkbox" checked>
-                    <span class="slider"></span>
-                </label>
-                </label>
-
-                <label class="notif-item">
-                <div class="notif-text">
-                    <div class="notif-name">New Messages</div>
-                    <div class="notif-sub">Notify me when I receive new messages</div>
-                </div>
-                <label class="switch">
-                    <input id="prefMessages" type="checkbox">
-                    <span class="slider"></span>
-                </label>
-                </label>
-
-                <label class="notif-item">
-                <div class="notif-text">
-                    <div class="notif-name">Stock Alerts</div>
-                    div class="notif-sub">Get notified about low stock and inventory updates</div>
-                </div>
-                <label class="switch">
-                    <input id="prefStock" type="checkbox">
-                    <span class="slider"></span>
-                </label>
-                </label>
-
-                <label class="notif-item">
-                <div class="notif-text">
-                    <div class="notif-name">Shift Time Reminders</div>
-                    <div class="notif-sub">Receive reminders about your upcoming shifts</div>
-                </div>
-                <label class="switch">
-                    <input id="prefReminders" type="checkbox">
-                    <span class="slider"></span>
-                </label>
-                </label>
-            </div>
-            </aside>
+            <button class="logout">Log Out</button>
         </div>
-        </section>
+
+        </div>
     </main>
     </div>
 
-    <script src="profile.js"></script>
-</body>
-</html>
+    <script src="script.js"></script>
+    </body>
+    </html>

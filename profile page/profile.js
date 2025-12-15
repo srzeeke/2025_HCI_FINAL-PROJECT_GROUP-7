@@ -1,127 +1,115 @@
-// Utility: simple escape for safe text insertion
-function q(id){ return document.getElementById(id) }
+// Helpers
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-// Load saved profile from localStorage (if present)
+const backBtn = $('.back');
+const saveBtn = $('.btn.primary');
+const cancelBtn = $('.btn.secondary');
+const logoutBtn = $('.logout');
+const changePhotoBtn = $('.change-photo');
+
+const rightPanel = $('.right');
+const inputs = $$('input', rightPanel);
+const textarea = $('textarea', rightPanel);
+
+// Map fields
+const [
+  fullNameInput,
+  usernameInput,
+  emailInput,
+  phoneInput
+] = inputs;
+
+// Storage key
+const STORAGE_KEY = 'profile_demo';
+
+// Load profile on start
 document.addEventListener('DOMContentLoaded', () => {
-  const saved = JSON.parse(localStorage.getItem('profile_demo') || '{}');
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 
-  if (saved.fullName) q('fullName').value = saved.fullName;
-  if (saved.username) q('username').value = saved.username;
-  if (saved.email) q('email').value = saved.email;
-  if (saved.phone) q('phone').value = saved.phone;
-  if (saved.bio) q('bio').value = saved.bio;
+  if (!Object.keys(saved).length) return;
 
-  // toggles
-  if (typeof saved.publicProfile === 'boolean') q('publicProfile').checked = saved.publicProfile;
-  if (typeof saved.showPhone === 'boolean') q('showPhone').checked = saved.showPhone;
-  if (typeof saved.prefPush === 'boolean') q('prefPush').checked = saved.prefPush;
-  if (typeof saved.prefEmail === 'boolean') q('prefEmail').checked = saved.prefEmail;
-  if (typeof saved.prefMessages === 'boolean') q('prefMessages').checked = saved.prefMessages;
-  if (typeof saved.prefStock === 'boolean') q('prefStock').checked = saved.prefStock;
-  if (typeof saved.prefReminders === 'boolean') q('prefReminders').checked = saved.prefReminders;
+  fullNameInput.value = saved.fullName || fullNameInput.value;
+  usernameInput.value = saved.username || usernameInput.value;
+  emailInput.value = saved.email || emailInput.value;
+  phoneInput.value = saved.phone || phoneInput.value;
+  textarea.value = saved.bio || textarea.value;
 });
 
-// Save profile button
-q('saveBtn').addEventListener('click', () => {
+// Save
+saveBtn.addEventListener('click', () => {
   const data = {
-    fullName: q('fullName').value.trim(),
-    username: q('username').value.trim(),
-    email: q('email').value.trim(),
-    phone: q('phone').value.trim(),
-    bio: q('bio').value.trim(),
-    publicProfile: q('publicProfile').checked,
-    showPhone: q('showPhone').checked,
-    prefPush: q('prefPush').checked,
-    prefEmail: q('prefEmail').checked,
-    prefMessages: q('prefMessages').checked,
-    prefStock: q('prefStock').checked,
-    prefReminders: q('prefReminders').checked
+    fullName: fullNameInput.value.trim(),
+    username: usernameInput.value.trim(),
+    email: emailInput.value.trim(),
+    phone: phoneInput.value.trim(),
+    bio: textarea.value.trim()
   };
 
-  localStorage.setItem('profile_demo', JSON.stringify(data));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 
-  // brief visual confirmation aligned with screenshot feel
-  const saveBtn = q('saveBtn');
+  // Visual feedback
   saveBtn.disabled = true;
   saveBtn.textContent = 'Saved';
-  setTimeout(() => { saveBtn.disabled = false; saveBtn.textContent = 'Save'; }, 900);
+  setTimeout(() => {
+    saveBtn.disabled = false;
+    saveBtn.textContent = 'Save';
+  }, 900);
 });
 
-// Cancel button: restore last saved
-q('cancelBtn').addEventListener('click', () => {
-  const saved = JSON.parse(localStorage.getItem('profile_demo') || '{}');
-  if (!saved.fullName) {
-    // if nothing saved, reset to defaults seen in screenshot
-    q('fullName').value = 'John Doe';
-    q('username').value = 'johndoe';
-    q('email').value = 'john@example.com';
-    q('phone').value = '+1 (555) 123-4567';
-    q('bio').value = 'Tell us about yourself...';
-    q('publicProfile').checked = true;
-    q('prefPush').checked = true;
-    q('prefEmail').checked = true;
-    q('showPhone').checked = false;
-    q('prefMessages').checked = false;
-    q('prefStock').checked = false;
-    q('prefReminders').checked = false;
+// Cancel → restore saved or defaults
+cancelBtn.addEventListener('click', () => {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+  if (!Object.keys(saved).length) {
+    // Reset to original screenshot-like defaults
+    fullNameInput.value = 'Rina Wilson';
+    usernameInput.value = 'RinaW';
+    emailInput.value = 'rinawilson@gmail.com';
+    phoneInput.value = '+62 855-1234-5678';
+    textarea.value = 'Tell us about yourself...';
     return;
   }
 
-  // restore saved
-  q('fullName').value = saved.fullName || '';
-  q('username').value = saved.username || '';
-  q('email').value = saved.email || '';
-  q('phone').value = saved.phone || '';
-  q('bio').value = saved.bio || '';
-  q('publicProfile').checked = !!saved.publicProfile;
-  q('showPhone').checked = !!saved.showPhone;
-  q('prefPush').checked = !!saved.prefPush;
-  q('prefEmail').checked = !!saved.prefEmail;
-  q('prefMessages').checked = !!saved.prefMessages;
-  q('prefStock').checked = !!saved.prefStock;
-  q('prefReminders').checked = !!saved.prefReminders;
+  fullNameInput.value = saved.fullName || '';
+  usernameInput.value = saved.username || '';
+  emailInput.value = saved.email || '';
+  phoneInput.value = saved.phone || '';
+  textarea.value = saved.bio || '';
 });
 
 // Logout (demo)
-q('logoutBtn').addEventListener('click', () => {
-  localStorage.removeItem('profile_demo');
-  // simulate redirect to login page as in the screenshot
-  alert('Logged out (demo). Redirecting to login.');
+logoutBtn.addEventListener('click', () => {
+  localStorage.removeItem(STORAGE_KEY);
+  alert('Logged out (demo)');
+  
+  // Optional redirect
   window.location.href = 'login.html';
 });
 
-// Sidebar logout (top-left)
-q('sidebarLogout').addEventListener('click', (e) => {
-  e.preventDefault();
-  q('logoutBtn').click();
+// Back button behavior
+backBtn.addEventListener('click', () => {
+  window.history.back();
 });
 
-// Change photo (demo)
-q('changePhoto').addEventListener('click', () => {
-  // create a file input on the fly for demo upload
+// Change photo (demo upload)
+changePhotoBtn.addEventListener('click', () => {
   const input = document.createElement('input');
   input.type = 'file';
   input.accept = 'image/*';
+
   input.onchange = () => {
     const file = input.files && input.files[0];
     if (!file) return;
-    // Show a small confirmation to emulate change
+
     const reader = new FileReader();
     reader.onload = () => {
-      // Show temporary avatar initials replaced by "OK" briefly
-      const a = document.querySelector('.avatar');
-      const previous = a.textContent;
-      a.textContent = 'OK';
-      setTimeout(()=> a.textContent = previous, 1200);
-      alert('Photo uploaded (demo). Image not persisted in this demo.');
+      const avatar = $('.avatar');
+      avatar.src = reader.result;
+      alert('Photo updated (local preview only)');
     };
     reader.readAsDataURL(file);
   };
-  input.click();
-});
 
-// Back behavior (demo)
-q('backBtn').addEventListener('click', () => {
-  // In the screenshot it shows a back link — simulate navigation
-  window.history.back();
+  input.click();
 });
