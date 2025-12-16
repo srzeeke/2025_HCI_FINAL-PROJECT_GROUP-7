@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory — ZFF</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="inventory.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-background">
+
+    <header class="bg-surface border-b border-border sticky top-0 z-50 shadow-sm">
+        <div class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo and Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-text-primary">PharmaCrew</h1>
+                        <p class="text-xs text-text-secondary">Business Intelligence</p>
+                    </div>
+                </div>
+
+                <!-- Main Navigation -->
+                <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+                    <a href="business_overview_dashboard.html" class="px-4 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md">
+                        <img src="https://api.iconify.design/mdi:view-dashboard.svg?color=%232563EB" alt="" class="w-4 h-4 inline mr-2" aria-hidden="true">
+                        Dashboard
+                    </a>
+                    <a href="inventory_analytics_center.html" class="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-background rounded-md transition-colors">
+                        <img src="https://api.iconify.design/mdi:chart-box-outline.svg?color=%236B7280" alt="" class="w-4 h-4 inline mr-2" aria-hidden="true">
+                        Analytics
+                    </a>
+                    <a href="inventory_item_management.html" class="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-background rounded-md transition-colors">
+                        <img src="https://api.iconify.design/mdi:package-variant.svg?color=%236B7280" alt="" class="w-4 h-4 inline mr-2" aria-hidden="true">
+                        Inventory
+                    </a>
+                    <a href="team_directory.html" class="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-background rounded-md transition-colors">
+                        <img src="https://api.iconify.design/mdi:account-group-outline.svg?color=%236B7280" alt="" class="w-4 h-4 inline mr-2" aria-hidden="true">
+                        Team
+                    </a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-3">
+                    <!-- Notifications -->
+                    <button type="button" class="relative p-2 text-text-secondary hover:text-text-primary hover:bg-background rounded-lg transition-colors focus-visible-ring" aria-label="View notifications">
+                        <img src="https://api.iconify.design/mdi:bell-outline.svg?color=%236B7280" alt="" class="w-6 h-6" aria-hidden="true">
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full" aria-label="3 unread notifications"></span>
+                    </button>
+
+                    <!-- User Menu -->
+                    <div class="relative">
+                        <button type="button" id="userMenuButton" class="flex items-center gap-2 p-2 hover:bg-background rounded-lg transition-colors focus-visible-ring" aria-expanded="false" aria-haspopup="true">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="Profile picture of John Smith, Pharmacy Manager" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                            <div class="hidden sm:block text-left">
+                                <p class="text-sm font-medium text-text-primary">John Smith</p>
+                                <p class="text-xs text-text-secondary">Manager</p>
+                            </div>
+                            <img src="https://api.iconify.design/mdi:chevron-down.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-56 bg-surface rounded-lg shadow-lg border border-border py-1 z-50">
+                            <a href="push_notification_testing_interface.html" class="flex items-center gap-3 px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors">
+                                <img src="https://api.iconify.design/mdi:bell-cog-outline.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                                Notifications
+                            </a>
+                            <div class="border-t border-border my-1"></div>
+                            <a href="authentication_portal.html" class="flex items-center gap-3 px-4 py-2 text-sm text-error hover:bg-error-50 transition-colors">
+                                <img src="https://api.iconify.design/mdi:logout.svg?color=%23EF4444" alt="" class="w-5 h-5" aria-hidden="true">
+                                Sign Out
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button type="button" id="mobileMenuButton" class="md:hidden p-2 text-text-secondary hover:text-text-primary hover:bg-background rounded-lg transition-colors focus-visible-ring" aria-label="Toggle mobile menu" aria-expanded="false">
+                        <img src="https://api.iconify.design/mdi:menu.svg?color=%236B7280" alt="" class="w-6 h-6" aria-hidden="true">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-surface">
+            <nav class="px-4 py-3 space-y-1" aria-label="Mobile navigation">
+                <a href="business_overview_dashboard.html" class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md">
+                    <img src="https://api.iconify.design/mdi:view-dashboard.svg?color=%232563EB" alt="" class="w-5 h-5" aria-hidden="true">
+                    Dashboard
+                </a>
+                <a href="inventory_analytics_center.html" class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-secondary hover:bg-background rounded-md transition-colors">
+                    <img src="https://api.iconify.design/mdi:chart-box-outline.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                    Analytics
+                </a>
+                <a href="inventory_item_management.html" class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-secondary hover:bg-background rounded-md transition-colors">
+                    <img src="https://api.iconify.design/mdi:package-variant.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                    Inventory
+                </a>
+                <a href="team_directory.html" class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-secondary hover:bg-background rounded-md transition-colors">
+                    <img src="https://api.iconify.design/mdi:account-group-outline.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                    Team
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <section class="mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-semibold text-text-primary mb-1">Inventory Overview</h2>
+                    <p class="text-sm text-text-secondary">Real-time information on the stocks of our products</p>
+                </div>
+                
+                <!-- Dashboard Controls -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- Date Range Selector -->
+                    <div class="relative">
+                        <button type="button" id="dateRangeButton" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-text-primary bg-surface border border-border rounded-lg hover:bg-background transition-colors focus-visible-ring">
+                            <img src="https://api.iconify.design/bi:hourglass-split.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                            <span id="selectedDateRange">Up to date</span>
+                            <img src="https://api.iconify.design/mdi:chevron-down.svg?color=%236B7280" alt="" class="w-4 h-4" aria-hidden="true">
+                        </button>
+                        
+                        <!-- Date Range Dropdown -->
+                        <div id="dateRangeMenu" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-lg border border-border py-1 z-40">
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="today">All products</button>
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="yesterday">Up to date</button>
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="7days">Expired</button>
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="30days">Close to expired</button>
+                            <div class="border-t border-border my-1"></div>
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="custom">Multiple selection</button>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Location Filter -->
+
+                    <div class="relative">
+                        <button type="button" id="dateRangeButton" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-text-primary bg-surface border border-border rounded-lg hover:bg-background transition-colors focus-visible-ring">
+                            <img src="https://api.iconify.design/iconamoon:location-pin.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                            <span id="selectedDateRange">Location</span>
+                            <img src="https://api.iconify.design/mdi:chevron-down.svg?color=%236B7280" alt="" class="w-4 h-4" aria-hidden="true">
+                        </button>
+                        
+                        <!-- Date Range Dropdown -->
+                        <div id="dateRangeMenu" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-lg border border-border py-1 z-40">
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="today">All Locations</button>
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="yesterday">Main Street Pharmacy</button>
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="7days">Downtown Pharmacy</button>
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="30days">Westside Pharmacy</button>
+                            <button type="button" class="date-range-option w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors" data-range="custom">Eastside Pharmacy</button>
+                        </div>
+                    </div>
+
+                    <!-- Refresh Button -->
+                    <button type="button" id="refreshButton" class="p-2 text-text-secondary hover:text-text-primary bg-surface border border-border rounded-lg hover:bg-background transition-colors focus-visible-ring" aria-label="Refresh dashboard data">
+                        <img src="https://api.iconify.design/mdi:refresh.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+                    </button>
+                </div>
+            </div>
+
+            <!-- System Status Bar -->
+            <div class="mt-4 flex flex-wrap items-center gap-4 p-3 bg-surface border border-border rounded-lg">
+                <div class="flex items-center gap-2">
+                    <span class="status-indicator status-active" aria-label="Data sync active"></span>
+                    <span class="text-xs text-text-secondary">Data Sync: Active</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="status-indicator status-active" aria-label="POS system connected"></span>
+                    <span class="text-xs text-text-secondary">POS: Connected</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="status-indicator status-active" aria-label="Inventory system connected"></span>
+                    <span class="text-xs text-text-secondary">Inventory: Connected</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <img src="https://api.iconify.design/mdi:clock-outline.svg?color=%236B7280" alt="" class="w-4 h-4" aria-hidden="true">
+                    <span class="text-xs text-text-secondary">Last Updated: <span id="lastUpdateTime">2 minutes ago</span></span>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- Controls -->
+    <section class="container mx-auto p-4 inventory-controls">
+        <div class="inventory-count">
+            Total items in inventory:
+            <strong id="totalCount">0</strong>
+        </div>
+
+        <div class="flex gap-2">
+            <input
+                type="text"
+                id="searchInput"
+                class="input"
+                placeholder="Search by name, brand or NDC number"
+            >
+            <button class="btn btn-outline" id="openFilterBtn" type="button">
+                Filter
+            </button>
+        </div>
+    </section>
+
+    <!-- Inventory Grid -->
+    <main class="container mx-auto p-4">
+        <div id="inventoryGrid" class="inventory-grid">
+            <!-- Product cards generated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Add Item Button -->
+    <button class="btn btn-primary inventory-add-btn">
+        + Add new item
+    </button>
+
+    <!-- JavaScript -->
+    <script src="inventory.js" defer></script>
+</main>
+
+    <!-- Filter Drawer -->
+<aside id="filterPanel" class="filter-panel">
+    
+    
+    <div class="filter-header">
+        <h3>Filters</h3>
+        <button type="button" id="closeFilterPanel" class="btn btn-outline">
+            <img src="https://api.iconify.design/material-symbols:close-rounded.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
+        </button>
+    </div>
+
+    <!-- zone scrollable -->
+    <div class="filter-scroll">
+
+        <div class="filter-content">
+
+            <!-- Brands -->
+            <div class="filter-section">
+                <h4>Brand</h4>
+                <div id="brandFilters" class="filter-options filter-options--columns">
+                    <!-- generated by JS -->
+                </div>
+            </div>
+
+            <!-- Category -->
+            <div class="filter-section">
+                <h4>Category</h4>
+                <div id="categoryFilters" class="filter-options"></div>
+            </div>
+
+            <!-- Prescription -->
+            <div class="filter-section">
+                <h4>Prescription</h4>
+                <label>
+                    <input type="checkbox" id="prescriptionOnly">
+                    Prescription required
+                </label>
+            </div>
+
+            <!-- Stock status -->
+            <div class="filter-section">
+                <h4>Stock Status</h4>
+                <label><input type="checkbox" value="ok"> In stock</label>
+                <label><input type="checkbox" value="warning"> Low stock</label>
+                <label><input type="checkbox" value="out"> Out of stock</label>
+            </div>
+        </div> 
+    </div>
+    <div class="filter-actions">
+        <button id="resetFilters" class="btn btn-outline">Reset</button>
+    </div>
+</aside>
+</body>
+</html>

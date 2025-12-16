@@ -1,0 +1,416 @@
+/* Inventory Page Specific Styles */
+
+/* Top bar adjustments */
+.inventory-header{
+    background-color: var(--color-surface);
+}
+
+/* Controls bar */
+.inventory-controls{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.inventory-count{
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+/* Inventory grid */
+.inventory-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Item card */
+.inventory-card{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    transition: box-shadow 200ms ease-out, transform 200ms ease-out;
+}
+
+.inventory-card:hover{
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Product image placeholder */
+.inventory-image{
+    width: 96px;
+    height: 96px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+/* Content */
+.inventory-content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inventory-header-row{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.inventory-title{
+    font-weight: 600;
+}
+
+.inventory-brand{
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+/* Info text */
+.inventory-info{
+    font-size: 0.875rem;
+}
+
+.inventory-info.warning{
+    color: var(--color-warning-600);
+    font-weight: 500;
+}
+
+.inventory-info.error{
+    color: var(--color-error-600);
+    font-weight: 500;
+}
+
+/* Quantity button */
+.inventory-actions{
+    margin-top: 0.25rem;
+}
+
+/* Floating add button */
+.inventory-add-btn{
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    transition: right 0.3s ease, transform 0.3s ease;
+}
+
+/* ============================= */
+/* ADD BUTTON OFFSET WHEN FILTER */
+/* ============================= */
+
+body.filters-open .inventory-add-btn {
+    right: calc(360px + 2rem); /* largeur du filter panel */
+}
+
+.inventory-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px){
+    .inventory-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .inventory-card{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .inventory-image{
+        width: 100%;
+        height: 160px;
+    }
+}
+
+/* ============================= */
+/* INVENTORY CONTROLS LAYOUT     */
+/* ============================= */
+
+.inventory-controls {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Left: total count */
+.inventory-count {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* Right: search + filter */
+.inventory-controls > .flex {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+/* Search input expands */
+#searchInput {
+    flex: 1;
+    height: 48px;
+    font-size: 1rem;
+    padding: 0 1rem;
+}
+
+/* Filter button */
+.inventory-controls .btn {
+    height: 48px;
+    padding: 0 1.25rem;
+    white-space: nowrap;
+}
+
+/* ============================= */
+/* MOBILE RESPONSIVE             */
+/* ============================= */
+
+@media (max-width: 768px) {
+    .inventory-controls {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .inventory-controls > .flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #searchInput,
+    .inventory-controls .btn {
+        width: 100%;
+    }
+}
+
+/* ============================= */
+/* FILTER PANEL – UX IMPROVEMENT */
+/* ============================= */
+
+/* ============================= */
+/* FILTER PANEL – CORE BEHAVIOR  */
+/* ============================= */
+
+.filter-panel {
+    position: fixed;
+    top: 64px; /* hauteur de la navbar */
+    right: 0;
+
+    width: 340px;
+    height: calc(100vh - 64px);
+
+    background: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+
+    box-shadow: -8px 0 24px rgba(0,0,0,0.08);
+
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+
+    z-index: 40;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* ============================= */
+/* FILTER HEADER LAYOUT          */
+/* ============================= */
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.filter-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Close button refinement */
+.filter-header .btn {
+    padding: 0.4rem;
+    min-width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9999px;
+}
+
+/* zone scrollable */
+.filter-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* scrollbar moderne (Chrome / Edge) */
+.filter-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.filter-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+}
+
+.filter-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-secondary);
+}
+
+/* Firefox */
+.filter-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+}
+
+/* OPEN STATE */
+.filter-panel.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.filter-section {
+    background: var(--color-surface);
+    border: 1px solid var(--colour-border);
+    border-radius: 12px;
+    padding: 0.75rem;
+}
+
+/* Section titles */
+.filter-section h4 {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+/* ============================= */
+/* FILTER OPTION ROWS            */
+/* ============================= */
+
+.filter-options label {
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover effect */
+.filter-options label:hover {
+    background: var(--color-background);
+}
+
+/* Checked state */
+.filter-options input[type="checkbox"]:checked + span {
+    font-weight: 500;
+}
+
+.filter-options input[type="checkbox"]:checked {
+    accent-color: var(--color-primary);
+}
+
+.filter-options label:has(input:checked) {
+    background: var(--color-primary-50);
+}
+
+/* Optional divider */
+.filter-options label:not(:last-child) {
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+/* ============================= */
+/* FILTER RESET BUTTON           */
+/* ============================= */
+
+.filter-actions {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.filter-actions .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Reset button */
+.filter-actions .btn-outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.1s ease;
+}
+
+/* Hover */
+.filter-actions .btn-outline:hover {
+    background: var(--color-background);
+    border-color: var(--color-primary-300);
+    color: var(--color-text-primary);
+}
+
+/* Active (click) */
+.filter-actions .btn-outline:active {
+    transform: scale(0.98);
+}
+
+/* Focus (accessibility) */
+.filter-actions .btn-outline:focus-visible {
+    outline: 2px solid var(--color-primary-200);
+    outline-offset: 2px;
+}
+
+
+
+
+
