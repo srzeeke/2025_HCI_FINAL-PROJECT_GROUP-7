@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shift Swap Requests</title>
+
+<style>
+:root{
+  --bg:#f6f8fb;
+  --sidebar:#0b1220;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --blue:#3b82f6;
+  --green:#10b981;
+  --red:#ef4444;
+  --yellow:#fbbf24;
+  --shift-morning:#fbbf24;
+  --shift-afternoon:#4b7fa5;
+}
+
+*{box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{margin:0;background:var(--bg);color:var(--text)}
+
+.layout{display:flex;min-height:100vh}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  width:240px;
+  background:linear-gradient(180deg,#0b1220,#020617);
+  padding:20px 16px;
+  color:#cbd5f5;
+}
+.logo{
+  font-weight:800;
+  color:#38bdf8;
+  letter-spacing:1px;
+  margin-bottom:28px;
+}
+.nav a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:10px;
+  color:#cbd5f5;
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:4px;
+}
+.nav a.active,
+.nav a:hover{
+  background:#111827;
+  color:#fff;
+}
+
+/* ---------- Main ---------- */
+.main{
+  flex:1;
+  padding:28px;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+h1{
+  margin:0;
+  font-size:22px;
+}
+.sub{
+  font-size:13px;
+  color:var(--blue);
+  margin-top:4px;
+}
+.new-btn{
+  background:#4b7fa5;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+/* ---------- Card ---------- */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin-top:18px;
+}
+.card h3{
+  margin:0 0 10px;
+  font-size:14px;
+  color:#374151;
+}
+
+/* ---------- Request ---------- */
+.request{
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:16px;
+}
+.req-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.badge{
+  background:var(--yellow);
+  color:#854d0e;
+  font-size:11px;
+  font-weight:700;
+  padding:3px 8px;
+  border-radius:999px;
+}
+.req-date{
+  font-size:11px;
+  color:var(--muted);
+  margin-left:8px;
+}
+
+/* ---------- Layout ---------- */
+.req-body{
+  display:grid;
+  grid-template-columns:1fr auto 140px;
+  gap:16px;
+}
+.swap{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.swap-label{
+  font-size:12px;
+  color:#60a5fa;
+}
+.shift{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px;
+}
+.shift strong{
+  display:block;
+  font-size:13px;
+}
+.shift small{
+  display:block;
+  font-size:11px;
+  color:var(--muted);
+}
+.shift-bar{
+  margin-top:6px;
+  height:18px;
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  padding-left:8px;
+  font-size:11px;
+  font-weight:600;
+  color:#1f2937;
+}
+.morning{background:var(--shift-morning)}
+.afternoon{background:var(--shift-afternoon);color:white}
+
+/* ---------- Actions ---------- */
+.actions{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.btn{
+  border:none;
+  padding:8px;
+  border-radius:8px;
+  font-size:12px;
+  cursor:pointer;
+}
+.approve{background:var(--green);color:white}
+.reject{background:var(--red);color:white}
+.details{
+  background:white;
+  border:1px solid var(--border);
+}
+
+/* ---------- Reason ---------- */
+.reason{
+  margin-top:10px;
+  font-size:12px;
+  color:#60a5fa;
+  background:#f9fafb;
+  padding:8px;
+  border-radius:8px;
+  border:1px solid var(--border);
+}
+
+/* ---------- Swap Icon ---------- */
+.swap-icon{
+  font-size:22px;
+  color:#60a5fa;
+  display:flex;
+  align-items:center;
+}
+</style>
+</head>
+
+<body>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">ZFF</div>
+    <nav class="nav">
+      <a href="#">Dashboard</a>
+      <a href="#" class="active">Schedule</a>
+      <a href="#">Hours Tracking</a>
+      <a href="#">Shift Swaps</a>
+      <a href="#">Team Directory</a>
+      <a href="#">Messages</a>
+      <a href="#">Inventory</a>
+      <a href="#">Profile</a>
+      <a href="#">Notifications</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="header">
+      <div>
+        <h1>Shift Swap Requests</h1>
+        <div class="sub">2 pending requests</div>
+      </div>
+      <button class="new-btn">+ New Swap Request</button>
+    </div>
+
+    <div class="card">
+      <h3>Pending Requests</h3>
+
+      <!-- Request 1 -->
+      <div class="request">
+        <div class="req-header">
+          <div>
+            <span class="badge">Pending</span>
+            <span class="req-date">Requested on May 10, 2024</span>
+          </div>
+        </div>
+
+        <div class="req-body">
+          <div class="swap">
+            <div class="swap-label">Giving up</div>
+            <div class="shift">
+              <strong>John Smith</strong>
+              <small>May 15, 2024</small>
+              <small>09:00 - 17:00</small>
+              <div class="shift-bar morning">morning</div>
+            </div>
+
+            <div class="swap-label">Taking</div>
+            <div class="shift">
+              <strong>Sarah Johnson</strong>
+              <small>May 16, 2024</small>
+              <small>14:00 - 22:00</small>
+              <div class="shift-bar afternoon">afternoon</div>
+            </div>
+          </div>
+
+          <div class="swap-icon">⇄</div>
+
+          <div class="actions">
+            <button class="btn approve">Approve</button>
+            <button class="btn reject">Reject</button>
+            <button class="btn details">Details</button>
+          </div>
+        </div>
+
+        <div class="reason">Reason: family appointment</div>
+      </div>
+
+      <!-- Request 2 -->
+      <div class="request">
+        <div class="req-header">
+          <div>
+            <span class="badge">Pending</span>
+            <span class="req-date">Requested on May 11, 2024</span>
+          </div>
+        </div>
+
+        <div class="req-body">
+          <div class="swap">
+            <div class="swap-label">Giving up</div>
+            <div class="shift">
+              <strong>Sarah Johnson</strong>
+              <small>May 17, 2024</small>
+              <small>09:00 - 17:00</small>
+              <div class="shift-bar morning">morning</div>
+            </div>
+
+            <div class="swap-label">Taking</div>
+            <div class="shift">
+              <strong>David Brown</strong>
+              <small>May 19, 2024</small>
+              <small>14:00 - 22:00</small>
+              <div class="shift-bar afternoon">afternoon</div>
+            </div>
+          </div>
+
+          <div class="swap-icon">⇄</div>
+
+          <div class="actions">
+            <button class="btn approve">Approve</button>
+            <button class="btn reject">Reject</button>
+            <button class="btn details">Details</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>
