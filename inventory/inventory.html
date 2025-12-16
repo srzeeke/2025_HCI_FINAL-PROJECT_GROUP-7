@@ -8,6 +8,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="inventory.css">
+    <link rel="stylesheet" href="../profile/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,10 +17,37 @@
 
 <body class="bg-background">
 
-    <header class="bg-surface border-b border-border sticky top-0 z-50 shadow-sm">
+    <aside class="sidebar">
+            <div class="logo-and-toggle-wrapper">
+                <div class="logo">ZFF</div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i> 
+                </button>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> <span>Schedule</span></a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> <span>Hours Tracking</span></a></li>
+                    <li><a href="#"><i class="fas fa-exchange-alt"></i> <span>Shift Swaps</span></a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> <span>Team Directory</span></a></li>
+                    <li><a href="../messages/messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+                    <li class="active"><a href="../inventory/inventory.html"><i class="fas fa-boxes"></i> <span>Inventory</span></a></li>
+                </ul>
+            </nav>
+            <div class="profile-nav">
+                <ul>
+                    <li class="active"><a href="profile.html"><i class="fas fa-user-circle"></i> <span>Profile</span></a></li>
+                    <li><a href="../notifications/notifications.html"><i class="fas fa-bell"></i> <span>Notifications</span></a></li>
+                </ul>
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+            </div>
+        </aside>
+
+    <!-- <header class="bg-surface border-b border-border sticky top-0 z-50 shadow-sm">
         <div class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo and Brand -->
                 <div class="flex items-center gap-3">
                     <div class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg">
                         <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -31,7 +60,6 @@
                     </div>
                 </div>
 
-                <!-- Main Navigation -->
                 <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
                     <a href="business_overview_dashboard.html" class="px-4 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md">
                         <img src="https://api.iconify.design/mdi:view-dashboard.svg?color=%232563EB" alt="" class="w-4 h-4 inline mr-2" aria-hidden="true">
@@ -51,15 +79,12 @@
                     </a>
                 </nav>
 
-                <!-- Right Actions -->
                 <div class="flex items-center gap-3">
-                    <!-- Notifications -->
                     <button type="button" class="relative p-2 text-text-secondary hover:text-text-primary hover:bg-background rounded-lg transition-colors focus-visible-ring" aria-label="View notifications">
                         <img src="https://api.iconify.design/mdi:bell-outline.svg?color=%236B7280" alt="" class="w-6 h-6" aria-hidden="true">
                         <span class="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full" aria-label="3 unread notifications"></span>
                     </button>
 
-                    <!-- User Menu -->
                     <div class="relative">
                         <button type="button" id="userMenuButton" class="flex items-center gap-2 p-2 hover:bg-background rounded-lg transition-colors focus-visible-ring" aria-expanded="false" aria-haspopup="true">
                             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="Profile picture of John Smith, Pharmacy Manager" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
@@ -70,7 +95,6 @@
                             <img src="https://api.iconify.design/mdi:chevron-down.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
                         </button>
                         
-                        <!-- Dropdown Menu -->
                         <div id="userMenu" class="hidden absolute right-0 mt-2 w-56 bg-surface rounded-lg shadow-lg border border-border py-1 z-50">
                             <a href="push_notification_testing_interface.html" class="flex items-center gap-3 px-4 py-2 text-sm text-text-primary hover:bg-background transition-colors">
                                 <img src="https://api.iconify.design/mdi:bell-cog-outline.svg?color=%236B7280" alt="" class="w-5 h-5" aria-hidden="true">
@@ -84,7 +108,6 @@
                         </div>
                     </div>
 
-                    <!-- Mobile Menu Toggle -->
                     <button type="button" id="mobileMenuButton" class="md:hidden p-2 text-text-secondary hover:text-text-primary hover:bg-background rounded-lg transition-colors focus-visible-ring" aria-label="Toggle mobile menu" aria-expanded="false">
                         <img src="https://api.iconify.design/mdi:menu.svg?color=%236B7280" alt="" class="w-6 h-6" aria-hidden="true">
                     </button>
@@ -92,7 +115,6 @@
             </div>
         </div>
 
-        <!-- Mobile Navigation -->
         <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-surface">
             <nav class="px-4 py-3 space-y-1" aria-label="Mobile navigation">
                 <a href="business_overview_dashboard.html" class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-primary bg-primary-50 rounded-md">
@@ -113,7 +135,7 @@
                 </a>
             </nav>
         </div>
-    </header>
+    </header> -->
 
     <main class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
