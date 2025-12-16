@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hours Tracking Dashboard</title>
+
+<style>
+:root{
+  --bg:#f6f8fb;
+  --sidebar:#0b1220;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --text:#111827;
+  --border:#e5e7eb;
+  --blue:#2563eb;
+  --green:#22c55e;
+  --red:#ef4444;
+  --orange:#f59e0b;
+}
+
+*{box-sizing:border-box;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{margin:0;background:var(--bg);color:var(--text)}
+
+.layout{display:flex;min-height:100vh}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  width:240px;
+  background:linear-gradient(180deg,#0b1220,#020617);
+  color:#cbd5f5;
+  padding:20px 16px;
+}
+.logo{
+  font-weight:800;
+  color:#38bdf8;
+  letter-spacing:1px;
+  margin-bottom:28px;
+}
+.nav a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:10px;
+  color:#cbd5f5;
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:4px;
+}
+.nav a.active,
+.nav a:hover{
+  background:#111827;
+  color:#fff;
+}
+
+/* ---------- Main ---------- */
+.main{
+  flex:1;
+  padding:28px;
+}
+
+h1{
+  margin:0;
+  font-size:22px;
+}
+.subtitle{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
+}
+
+/* ---------- Stats ---------- */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:20px;
+}
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+}
+.stat small{
+  color:var(--muted);
+  font-size:12px;
+}
+.stat h2{
+  margin:6px 0 0;
+  font-size:22px;
+}
+
+/* ---------- Card ---------- */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  margin-top:24px;
+  padding:18px;
+}
+
+.card h3{
+  margin:0;
+  font-size:16px;
+}
+.card .date{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+/* ---------- Table ---------- */
+.table{
+  margin-top:14px;
+}
+.row{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr 1fr;
+  align-items:center;
+  padding:12px;
+  border-radius:12px;
+}
+.row.header{
+  font-size:12px;
+  color:var(--muted);
+}
+.row.data{
+  background:#f9fafb;
+  margin-top:8px;
+}
+.employee{
+  font-weight:600;
+}
+.employee small{
+  display:block;
+  font-weight:400;
+  font-size:11px;
+  color:var(--muted);
+}
+
+.hours{
+  font-weight:600;
+}
+.hours small{
+  display:block;
+  font-size:11px;
+  color:#60a5fa;
+  font-weight:400;
+}
+
+.badge{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:600;
+  width:max-content;
+}
+.ontrack{background:#dcfce7;color:#166534}
+.overtime{background:#fee2e2;color:#991b1b}
+.near{background:#fef3c7;color:#92400e}
+
+/* ---------- Capacity ---------- */
+.capacity{
+  margin-top:16px;
+}
+.cap-row{
+  margin-bottom:12px;
+}
+.cap-label{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  margin-bottom:6px;
+}
+.bar{
+  height:8px;
+  border-radius:999px;
+  background:#e5e7eb;
+  overflow:hidden;
+}
+.fill{
+  height:100%;
+  border-radius:999px;
+}
+.green{background:var(--green)}
+.red{background:var(--red)}
+.orange{background:var(--orange)}
+</style>
+</head>
+
+<body>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">ZFF</div>
+    <nav class="nav">
+      <a href="#">Dashboard</a>
+      <a href="#" class="active">Schedule</a>
+      <a href="#">Hours Tracking</a>
+      <a href="#">Shift Swaps</a>
+      <a href="#">Team Directory</a>
+      <a href="#">Messages</a>
+      <a href="#">Inventory</a>
+      <a href="#">Profile</a>
+      <a href="#">Notifications</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <h1>Hours Tracking</h1>
+    <div class="subtitle">Monitor employee hours and overtime</div>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat">
+        <small>Total Hours</small>
+        <h2>189</h2>
+      </div>
+      <div class="stat">
+        <small>Overtime Hours</small>
+        <h2>3</h2>
+      </div>
+      <div class="stat">
+        <small>Avg Hours/Employee</small>
+        <h2>37.8</h2>
+      </div>
+      <div class="stat">
+        <small>Active Employees</small>
+        <h2>5</h2>
+      </div>
+    </section>
+
+    <!-- Weekly Breakdown -->
+    <section class="card">
+      <h3>Weekly Hours Breakdown</h3>
+      <div class="date">May 13 – May 19, 2024</div>
+
+      <div class="table">
+        <div class="row header">
+          <div>Employee</div>
+          <div>Regular Hours</div>
+          <div>Overtime</div>
+          <div>Total Hours</div>
+          <div>Status</div>
+        </div>
+
+        <div class="row data">
+          <div class="employee">John Smith <small>5 shifts</small></div>
+          <div>38h</div>
+          <div>0h</div>
+          <div class="hours">38h <small>95% of 40h</small></div>
+          <div><span class="badge ontrack">On Track</span></div>
+        </div>
+
+        <div class="row data">
+          <div class="employee">Sarah Johnson <small>6 shifts</small></div>
+          <div>40h</div>
+          <div>3h</div>
+          <div class="hours">43h <small>108% of 40h</small></div>
+          <div><span class="badge overtime">Overtime</span></div>
+        </div>
+
+        <div class="row data">
+          <div class="employee">Mike Davis <small>5 shifts</small></div>
+          <div>37h</div>
+          <div>0h</div>
+          <div class="hours">37h <small>93% of 40h</small></div>
+          <div><span class="badge ontrack">On Track</span></div>
+        </div>
+
+        <div class="row data">
+          <div class="employee">Emma Wilson <small>5 shifts</small></div>
+          <div>39h</div>
+          <div>0h</div>
+          <div class="hours">39h <small>98% of 40h</small></div>
+          <div><span class="badge near">Near Limit</span></div>
+        </div>
+
+        <div class="row data">
+          <div class="employee">David Brown <small>4 shifts</small></div>
+          <div>32h</div>
+          <div>0h</div>
+          <div class="hours">32h <small>80% of 40h</small></div>
+          <div><span class="badge ontrack">On Track</span></div>
+        </div>
+      </div>
+
+      <!-- Capacity -->
+      <div class="capacity">
+        <h3 style="font-size:14px;margin-bottom:10px;">Weekly Capacity</h3>
+
+        <div class="cap-row">
+          <div class="cap-label"><span>John Smith</span><span>38h / 40h</span></div>
+          <div class="bar"><div class="fill green" style="width:95%"></div></div>
+        </div>
+
+        <div class="cap-row">
+          <div class="cap-label"><span>Sarah Johnson</span><span>43h / 40h</span></div>
+          <div class="bar"><div class="fill red" style="width:100%"></div></div>
+        </div>
+
+        <div class="cap-row">
+          <div class="cap-label"><span>Mike Davis</span><span>37h / 40h</span></div>
+          <div class="bar"><div class="fill green" style="width:93%"></div></div>
+        </div>
+
+        <div class="cap-row">
+          <div class="cap-label"><span>Emma Wilson</span><span>39h / 40h</span></div>
+          <div class="bar"><div class="fill orange" style="width:98%"></div></div>
+        </div>
+
+        <div class="cap-row">
+          <div class="cap-label"><span>David Brown</span><span>32h / 40h</span></div>
+          <div class="bar"><div class="fill green" style="width:80%"></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
