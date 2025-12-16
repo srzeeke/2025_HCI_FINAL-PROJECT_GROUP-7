@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Weekly Schedule (Fixed)</title>
+
+<style>
+:root{
+  --bg:#f6f8fb;
+  --sidebar:#0b1220;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --blue:#4b7fa5;
+  --yellow:#fffbdc;
+}
+
+*{box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{margin:0;background:var(--bg);color:var(--text)}
+
+.layout{display:flex;min-height:100vh}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  width:240px;
+  background:linear-gradient(180deg,#0b1220,#020617);
+  padding:20px 16px;
+  color:#cbd5f5;
+}
+.logo{
+  font-weight:800;
+  color:#38bdf8;
+  letter-spacing:1px;
+  margin-bottom:28px;
+}
+.nav a{
+  display:block;
+  padding:10px 12px;
+  border-radius:10px;
+  color:#cbd5f5;
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:4px;
+}
+.nav a.active,
+.nav a:hover{
+  background:#111827;
+  color:#fff;
+}
+
+/* ---------- Main ---------- */
+.main{
+  flex:1;
+  padding:28px;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
+h1{margin:0;font-size:22px}
+.subtitle{
+  font-size:13px;
+  color:#60a5fa;
+  margin-top:4px;
+}
+.actions{
+  display:flex;
+  gap:8px;
+}
+.btn{
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:white;
+  font-size:13px;
+}
+.btn.primary{
+  background:var(--blue);
+  color:white;
+  border:none;
+}
+
+/* ---------- Schedule ---------- */
+.schedule{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:12px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:80px repeat(7,1fr);
+}
+
+/* Header */
+.header-cell{
+  text-align:center;
+  font-size:12px;
+  color:#60a5fa;
+  padding:8px 4px;
+  border-bottom:1px solid var(--border);
+}
+.header-cell strong{
+  display:block;
+  color:#111827;
+  font-size:13px;
+}
+
+/* Time column */
+.time-col{
+  border-right:1px solid var(--border);
+}
+.time{
+  height:60px;
+  font-size:11px;
+  color:#60a5fa;
+  text-align:right;
+  padding:4px 6px;
+  border-bottom:1px dashed #e5e7eb;
+}
+
+/* Day columns */
+.day{
+  position:relative;
+  height:720px; /* 06:00–18:00 = 12 hours */
+  background:var(--yellow);
+  border-right:1px solid var(--border);
+  overflow:hidden; /* FIX */
+}
+.hour{
+  height:60px;
+  border-bottom:1px dashed #e5e7eb;
+}
+
+/* Shift blocks */
+.shift{
+  position:absolute;
+  left:8px;
+  right:8px;
+  background:var(--blue);
+  color:white;
+  border-radius:8px;
+  padding:6px;
+  font-size:12px;
+}
+.shift strong{display:block;font-size:13px}
+
+/* Add button */
+.add{
+  position:absolute;
+  bottom:8px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:11px;
+  background:white;
+  border:1px dashed var(--border);
+  border-radius:6px;
+  padding:4px 10px;
+  color:#60a5fa;
+}
+</style>
+</head>
+
+<body>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">ZFF</div>
+    <nav class="nav">
+      <a href="#">Dashboard</a>
+      <a href="#" class="active">Schedule</a>
+      <a href="#">Hours Tracking</a>
+      <a href="#">Shift Swaps</a>
+      <a href="#">Team Directory</a>
+      <a href="#">Messages</a>
+      <a href="#">Inventory</a>
+      <a href="#">Profile</a>
+      <a href="#">Notifications</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="header">
+      <div>
+        <h1>Weekly Schedule</h1>
+        <div class="subtitle">View and manage employee shifts for the week</div>
+      </div>
+      <div class="actions">
+        <button class="btn">May 13 – May 19, 2024</button>
+        <button class="btn primary">+ Add Shift</button>
+      </div>
+    </div>
+
+    <div class="schedule">
+      <div class="grid">
+
+        <!-- Header -->
+        <div class="header-cell">Time</div>
+        <div class="header-cell">Monday<strong>13</strong></div>
+        <div class="header-cell">Tuesday<strong>14</strong></div>
+        <div class="header-cell">Wednesday<strong>15</strong></div>
+        <div class="header-cell">Thursday<strong>16</strong></div>
+        <div class="header-cell">Friday<strong>17</strong></div>
+        <div class="header-cell">Saturday<strong>18</strong></div>
+        <div class="header-cell">Sunday<strong>19</strong></div>
+
+        <!-- Time column -->
+        <div class="time-col">
+          <div class="time">06:00</div>
+          <div class="time">07:00</div>
+          <div class="time">08:00</div>
+          <div class="time">09:00</div>
+          <div class="time">10:00</div>
+          <div class="time">11:00</div>
+          <div class="time">12:00</div>
+          <div class="time">13:00</div>
+          <div class="time">14:00</div>
+          <div class="time">15:00</div>
+          <div class="time">16:00</div>
+          <div class="time">17:00</div>
+        </div>
+
+        <!-- Monday -->
+        <div class="day">
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+
+          <div class="shift" style="top:0;height:360px">
+            <strong>Sarah Johnson</strong>
+            06:00 – 12:00
+          </div>
+
+          <div class="add">+ Add</div>
+        </div>
+
+        <!-- Tuesday -->
+        <div class="day">
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+
+          <div class="shift" style="top:480px;height:360px">
+            <strong>Sarah Johnson</strong>
+            14:00 – 20:00
+          </div>
+
+          <div class="add">+ Add</div>
+        </div>
+
+        <!-- Wednesday -->
+        <div class="day">
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+
+          <div class="shift" style="top:180px;height:180px">
+            <strong>Mike Davis</strong>
+            09:00 – 12:00
+          </div>
+
+          <div class="add">+ Add</div>
+        </div>
+
+        <!-- Thursday -->
+        <div class="day">
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+
+          <div class="shift" style="top:480px;height:480px">
+            <strong>John Smith</strong>
+            14:00 – 22:00
+          </div>
+
+          <div class="add">+ Add</div>
+        </div>
+
+        <!-- Friday -->
+        <div class="day">
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+          <div class="hour"></div><div class="hour"></div><div class="hour"></div>
+
+          <div class="shift" style="top:60px;height:600px">
+            <strong>Sarah Johnson</strong>
+            07:00 – 17:00
+          </div>
+
+          <div class="add">+ Add</div>
+        </div>
+
+        <!-- Saturday -->
+        <div class="day"><div class="add">+ Add</div></div>
+
+        <!-- Sunday -->
+        <div class="day"><div class="add">+ Add</div></div>
+
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
