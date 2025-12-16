@@ -24,6 +24,17 @@ function renderProducts(products) {
     inventoryGrid.innerHTML = "";
     totalCountEl.textContent = products.length;
 
+    if (products.length === 0) {
+        inventoryGrid.innerHTML = `
+            <div class="no-results-message" style="text-align: center; padding: 2rem; color: var(--color-text-secondary);">
+                <img src="https://api.iconify.design/mdi:magnify.svg?color=%236B7280" alt="" class="w-12 h-12 mx-auto mb-4 opacity-50" aria-hidden="true">
+                <h3 class="text-lg font-medium text-text-primary mb-2">No products found</h3>
+                <p>No product corresponding to your search</p>
+            </div>
+        `;
+        return;
+    }
+
     products.forEach(p => {
         const card = document.createElement("div");
         card.className = "card inventory-card";
